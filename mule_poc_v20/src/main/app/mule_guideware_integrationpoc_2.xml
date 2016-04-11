@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ftp="http://www.mulesoft.org/schema/mule/ftp" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/ee/ftp http://www.mulesoft.org/schema/mule/ee/ftp/current/mule-ftp-ee.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/ftp http://www.mulesoft.org/schema/mule/ftp/current/mule-ftp.xsd">
+    <ws:consumer-config name="Web_Service_Consumer" wsdlLocation="http://169.53.168.18:8080/cc/ws/ca/on/wsib/cc/webservices/createclaim/saveinprogress/service/IClaimRegistrationAPI?wsdl" service="IClaimRegistrationAPI" port="IClaimRegistrationAPISoap12Port" serviceAddress="http://169.53.168.18:8080/cc/ws/ca/on/wsib/cc/webservices/createclaim/saveinprogress/service/IClaimRegistrationAPI" doc:name="Web Service Consumer"></ws:consumer-config>
+    <mulexml:dom-to-xml-transformer name="DOM_to_XML" doc:name="DOM to XML"></mulexml:dom-to-xml-transformer>
+    <ftp:connector name="FTP" pollingFrequency="1000" validateConnections="true" doc:name="FTP"></ftp:connector>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8922" doc:name="HTTP Listener Configuration"></http:listener-config>
+    <file:connector name="ProcessResponse" writeToDirectory="C:\Users\srchavali\AnypointStudio\workspace\April07\mule_poc_v20\src\main\resources\output" autoDelete="true" streaming="true" validateConnections="true" doc:name="File" outputPattern="Output.xml"></file:connector>
+    <file:connector name="ProcessRequest" outputPattern="Input.xml" writeToDirectory="C:\Users\srchavali\AnypointStudio\workspace\April07\mule_poc_v20\src\main\resources\input" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"></file:connector>
+    <file:connector name="InitialSave" outputPattern="input1.xml" writeToDirectory="C:\Users\srchavali\AnypointStudio\workspace\April07\mule_poc_v20\src\main\resources\input" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"></file:connector>
+    <file:connector name="InitialSave1" outputPattern="Input2.xml" writeToDirectory="C:\Users\srchavali\AnypointStudio\workspace\April07\mule_poc_v20\src\main\resources\input1" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"></file:connector>
+    <file:connector name="FileRead" outputPattern="input1.xml" readFromDirectory="C:\Users\srchavali\AnypointStudio\workspace\April07\mule_poc_v20\src\main\resources\input1" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"></file:connector>
+    <flow name="mule_guideware_integrationpoc_2Flow1"> 
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/fnoltestservice" doc:name="HTTP"></http:listener>  
+        <set-session-variable variableName="Input1" value="#[payload]" doc:name="Session Variable"></set-session-variable>  
+        <mulexml:dom-to-xml-transformer doc:name="DOM to XML"></mulexml:dom-to-xml-transformer>  
+        <dw:transform-message metadata:id="ffb0a322-f7b9-4dc2-977d-3beae9ebb13b" doc:name="Transform Message"> 
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml skipNullOn="everywhere"
+%namespace ns0 http://wsib.on.ca/cc/webservices/saveinprogress/service
+%namespace ns1 http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.sipclaimmodel
+---
+{
+	ns0#saveInProgresseForm6eForm7: {
+		ns0#request: {
+			ns1#AccidentConcern_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AccidentConcern_WC,
+			ns1#AccidentConcernDescription_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AccidentConcernDescription_WC,
+			ns1#AccidentConcernReason_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AccidentConcernReason_WC,
+			ns1#AccidentWitness_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AccidentWitness_WC,
+			ns1#AdditionalIntakeComments_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AdditionalIntakeComments_WC,
+			ns1#AddressOwner: {
+				ns1#Address: {
+					ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#AddressLine1,
+					ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#AddressLine2,
+					ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#AddressLine3,
+					ns1#AreaOfAccident_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#AreaOfAccident_WC,
+					ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#City,
+					ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#Country,
+					ns1#IsAddressForOffsiteJob_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#IsAddressForOffsiteJob_WC,
+					ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#PostalCode,
+					ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#State,
+					ns1#WSIB_EmployersPremises: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#AddressOwner.ns1#Address.ns1#WSIB_EmployersPremises
+				}
+			},
+			ns1#ArrayPriorClaimNumber_WC: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ArrayPriorClaimNumber_WC.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#PriorSimilarClaimNumber_WC: entry.ns1#PriorSimilarClaimNumber_WC
+					}
+				}))
+			},
+			ns1#BranchLocation_WC: {
+				ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#BranchLocation_WC.ns1#AddressLine1,
+				ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#BranchLocation_WC.ns1#AddressLine2,
+				ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#BranchLocation_WC.ns1#AddressLine3,
+				ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#BranchLocation_WC.ns1#City,
+				ns1#ContactWhereThisIsPrimary: {
+					ns1#AlternatePhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#BranchLocation_WC.ns1#ContactWhereThisIsPrimary.ns1#AlternatePhone
+				},
+				ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#BranchLocation_WC.ns1#Country,
+				ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#BranchLocation_WC.ns1#PostalCode,
+				ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#BranchLocation_WC.ns1#State
+			},
+			ns1#claimant: {
+				ns1#AlternatePhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#AlternatePhone,
+				ns1#DateOfBirth: {
+					ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#DateOfBirth.ns1#XmlDateTime
+				},
+				ns1#EmailAddress1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#EmailAddress1,
+				ns1#FirstName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#FirstName,
+				ns1#Gender: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#Gender,
+				ns1#LastName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#LastName,
+				ns1#MiddleName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#MiddleName,
+				ns1#Occupation: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#Occupation,
+				ns1#PrimaryAddress: {
+					ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryAddress.ns1#AddressLine1,
+					ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryAddress.ns1#AddressLine2,
+					ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryAddress.ns1#AddressLine3,
+					ns1#AddressType: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryAddress.ns1#AddressType,
+					ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryAddress.ns1#City,
+					ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryAddress.ns1#Country,
+					ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryAddress.ns1#PostalCode,
+					ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryAddress.ns1#State
+				},
+				ns1#PrimaryLanguage: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#PrimaryLanguage,
+				ns1#SmokerCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#SmokerCheck_WC,
+				ns1#SmokerCheckAmount_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#SmokerCheckAmount_WC,
+				ns1#SmokerCheckAmountPerDay_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#SmokerCheckAmountPerDay_WC,
+				ns1#TaxID: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#TaxID,
+				ns1#WorkerSinNoExist_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#WorkerSinNoExist_WC,
+				ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#WorkPhone,
+				ns1#WSIB_GUID: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#WSIB_GUID,
+				ns1#WSIB_LanguageOfService: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#claimant.ns1#WSIB_LanguageOfService
+			},
+			ns1#ClaimInjuryIncident: {
+				ns1#AccidentCatOptns_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#AccidentCatOptns_WC,
+				ns1#AccidentIllnessCat_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#AccidentIllnessCat_WC,
+				ns1#ArrayHandArmVibration_WC: {
+					((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#ArrayHandArmVibration_WC.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+						ns1#Entry @(action: entry.@action): {
+							ns1#FromDate: entry.ns1#FromDate,
+							ns1#HrsPerDayUsedWithVibratoryTool: entry.ns1#HrsPerDayUsedWithVibratoryTool,
+							ns1#ToDate: entry.ns1#ToDate,
+							ns1#VibratoryToolsUsed: entry.ns1#VibratoryToolsUsed
+						}
+					}))
+				},
+				ns1#ArrayHAVSEmployHistory_WC: {
+					((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#ArrayHAVSEmployHistory_WC.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+						ns1#Entry @(action: entry.@action): {
+							ns1#HAVSEmployHistoryContact: {
+								ns1#Name: entry.ns1#HAVSEmployHistoryContact.ns1#Name
+							},
+							ns1#WorkerHAVSOntarioCheckWC: entry.ns1#WorkerHAVSOntarioCheckWC
+						}
+					}))
+				},
+				ns1#ArrayNIHLEmployHistory_WC: {
+					((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#ArrayNIHLEmployHistory_WC.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+						ns1#Entry @(action: entry.@action): {
+							ns1#DepartmentNIHL: entry.ns1#DepartmentNIHL,
+							ns1#EarProtectionNIHL: entry.ns1#EarProtectionNIHL,
+							ns1#NIHLEmployHistoryContact: {
+								ns1#Name: entry.ns1#NIHLEmployHistoryContact.ns1#Name,
+								ns1#PrimaryAddress: {
+									ns1#AddressLine1: entry.ns1#NIHLEmployHistoryContact.ns1#PrimaryAddress.ns1#AddressLine1,
+									ns1#AddressLine2: entry.ns1#NIHLEmployHistoryContact.ns1#PrimaryAddress.ns1#AddressLine2,
+									ns1#AddressLine3: entry.ns1#NIHLEmployHistoryContact.ns1#PrimaryAddress.ns1#AddressLine3,
+									ns1#City: entry.ns1#NIHLEmployHistoryContact.ns1#PrimaryAddress.ns1#City,
+									ns1#Country: entry.ns1#NIHLEmployHistoryContact.ns1#PrimaryAddress.ns1#Country,
+									ns1#PostalCode: entry.ns1#NIHLEmployHistoryContact.ns1#PrimaryAddress.ns1#PostalCode,
+									ns1#State: entry.ns1#NIHLEmployHistoryContact.ns1#PrimaryAddress.ns1#State
+								}
+							},
+							ns1#StillInBusinessCheckNIHL: entry.ns1#StillInBusinessCheckNIHL,
+							ns1#WSIB_HAVSNIHLEmployType: entry.ns1#WSIB_HAVSNIHLEmployType
+						}
+					}))
+				},
+				ns1#ArrayNoiseInducedHearingLoss_WC: {
+					((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#ArrayNoiseInducedHearingLoss_WC.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+						ns1#Entry @(action: entry.@action): {
+							ns1#DateSoundSurveyConducted: entry.ns1#DateSoundSurveyConducted,
+							ns1#EmploymentFromDateWhenInjured: entry.ns1#EmploymentFromDateWhenInjured,
+							ns1#EmploymentToDateWhenInjured: entry.ns1#EmploymentToDateWhenInjured,
+							ns1#EquipUsedWhenInjured: entry.ns1#EquipUsedWhenInjured,
+							ns1#NoiseLevels: entry.ns1#NoiseLevels,
+							ns1#NoiseLevelsExposed: entry.ns1#NoiseLevelsExposed,
+							ns1#OccupationTypeWhenInjured: entry.ns1#OccupationTypeWhenInjured,
+							ns1#WorkAreaDescriptionWhenInjured: entry.ns1#WorkAreaDescriptionWhenInjured
+						}
+					}))
+				},
+				ns1#BodyParts: {
+					((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#BodyParts.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+						ns1#Entry @(action: entry.@action): {
+							ns1#DetailedBodyPart: entry.ns1#DetailedBodyPart,
+							ns1#PrimaryBodyPart: entry.ns1#PrimaryBodyPart
+						}
+					}))
+				},
+				ns1#CatastrophicCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#CatastrophicCheck_WC,
+				ns1#NatureOfAccident_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NatureOfAccident_WC,
+				ns1#NIHLCurrEmploySoundSurvey_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLCurrEmploySoundSurvey_WC,
+				ns1#NIHLCurrOccType_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLCurrOccType_WC,
+				ns1#NIHLDateHearingProProvided_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLDateHearingProProvided_WC,
+				ns1#NIHLEmploymentFromDate_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLEmploymentFromDate_WC,
+				ns1#NIHLEmploymentToDate_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLEmploymentToDate_WC,
+				ns1#NIHLExposureDetails_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLExposureDetails_WC,
+				ns1#NIHLFullTimeWorkCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLFullTimeWorkCheck_WC,
+				ns1#NIHLNoiseLevelCompare_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLNoiseLevelCompare_WC,
+				ns1#NIHLPrevEmploySoundSurvey_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLPrevEmploySoundSurvey_WC,
+				ns1#NIHLPrevSimCond_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLPrevSimCond_WC,
+				ns1#NIHLTypeOfHearingProUsed_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimInjuryIncident.ns1#NIHLTypeOfHearingProUsed_WC
+			},
+			ns1#ClaimReportedByType_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimReportedByType_WC,
+			ns1#ClaimType_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ClaimType_WC,
+			ns1#Contacts: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Contacts.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#Roles: {
+							((entry.ns1#Roles.*ns1#Entry default [] ) map ((entry01 , indexOfEntry01) -> {
+								ns1#Entry @(action: entry01.@action): {
+									ns1#Contact: {
+										ns1#entity-Person: {
+											ns1#FirstName: entry01.ns1#Contact.ns1#entity-Person.ns1#FirstName,
+											ns1#LastName: entry01.ns1#Contact.ns1#entity-Person.ns1#LastName
+										},
+										ns1#AlternatePhone: entry01.ns1#Contact.ns1#AlternatePhone,
+										ns1#WorkPhone: entry01.ns1#Contact.ns1#WorkPhone,
+										ns1#WSIB_ThirdPartyOrganization: entry01.ns1#Contact.ns1#WSIB_ThirdPartyOrganization
+									},
+									ns1#NIHLwitnessEmployer: {
+										ns1#Name: entry01.ns1#NIHLwitnessEmployer.ns1#Name
+									},
+									ns1#Role: entry01.ns1#Role,
+									ns1#WitnessPosition_WC: entry01.ns1#WitnessPosition_WC
+								}
+							}))
+						},
+						ns1#WSIB_OtherCompany: {
+							ns1#Name: entry.ns1#WSIB_OtherCompany.ns1#Name,
+							ns1#PrimaryAddress: {
+								ns1#AddressLine1: entry.ns1#WSIB_OtherCompany.ns1#PrimaryAddress.ns1#AddressLine1,
+								ns1#AddressLine2: entry.ns1#WSIB_OtherCompany.ns1#PrimaryAddress.ns1#AddressLine2,
+								ns1#AddressLine3: entry.ns1#WSIB_OtherCompany.ns1#PrimaryAddress.ns1#AddressLine3,
+								ns1#City: entry.ns1#WSIB_OtherCompany.ns1#PrimaryAddress.ns1#City,
+								ns1#Country: entry.ns1#WSIB_OtherCompany.ns1#PrimaryAddress.ns1#Country,
+								ns1#PostalCode: entry.ns1#WSIB_OtherCompany.ns1#PrimaryAddress.ns1#PostalCode,
+								ns1#State: entry.ns1#WSIB_OtherCompany.ns1#PrimaryAddress.ns1#State
+							}
+						}
+					}
+				}))
+			},
+			ns1#DateRenderReportSubmitted_WC: {
+				ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#DateRenderReportSubmitted_WC.ns1#XmlDateTime
+			},
+			ns1#DateRptdToEmployer: {
+				ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#DateRptdToEmployer.ns1#XmlDateTime
+			},
+			ns1#DeathDate: {
+				ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#DeathDate.ns1#XmlDateTime
+			},
+			ns1#Description: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Description,
+			ns1#Documents: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Documents.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#Author: entry.ns1#Author,
+						ns1#DateCreated: {
+							ns1#XmlDateTime: entry.ns1#DateCreated.ns1#XmlDateTime
+						},
+						ns1#Description: entry.ns1#Description,
+						ns1#DocUID: entry.ns1#DocUID,
+						ns1#MimeType: entry.ns1#MimeType,
+						ns1#Name: entry.ns1#Name,
+						ns1#WSIB_DateReceived: {
+							ns1#XmlDateTime: entry.ns1#WSIB_DateReceived.ns1#XmlDateTime
+						},
+						ns1#WSIB_Document_Intake_Source: entry.ns1#WSIB_Document_Intake_Source,
+						ns1#WSIB_DocumentSection: entry.ns1#WSIB_DocumentSection,
+						ns1#WSIB_FormID: entry.ns1#WSIB_FormID,
+						ns1#WSIB_HCPymtDocument: entry.ns1#WSIB_HCPymtDocument,
+						ns1#WSIB_UDID: entry.ns1#WSIB_UDID
+					}
+				}))
+			},
+			ns1#employer_WC: {
+				ns1#WSIB_AccountNumber: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#WSIB_AccountNumber,
+				ns1#PrimaryAddress: {
+					ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryAddress.ns1#AddressLine1,
+					ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryAddress.ns1#AddressLine2,
+					ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryAddress.ns1#AddressLine3,
+					ns1#AddressType: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryAddress.ns1#AddressType,
+					ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryAddress.ns1#City,
+					ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryAddress.ns1#Country,
+					ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryAddress.ns1#PostalCode,
+					ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryAddress.ns1#State
+				},
+				ns1#PrimaryContact: {
+					ns1#EmailAddress1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryContact.ns1#EmailAddress1,
+					ns1#Name: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryContact.ns1#Name,
+					ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#PrimaryContact.ns1#WorkPhone
+				},
+				ns1#SBN_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#SBN_WC,
+				ns1#WSIB_TradeName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#WSIB_TradeName,
+				ns1#WSIB_LegalName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#WSIB_LegalName,
+				ns1#WSIB_ProviderID: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#employer_WC.ns1#WSIB_ProviderID
+			},
+			ns1#EmploymentData: {
+				ns1#BenEarningsSummary: {
+					((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#BenEarningsSummary.*ns1#Entry default []) map ((entry , indexOfEntry) -> {
+						ns1#Entry @(action: entry.@action): {
+							ns1#BenefitEarnings: {
+								((entry.ns1#BenefitEarnings.*ns1#Entry default [] ) map ((entry01 , indexOfEntry01) -> {
+									ns1#Entry @(action: entry01.@action): {
+										ns1#ComputingFactor: entry01.ns1#ComputingFactor,
+										ns1#PayRate: entry01.ns1#PayRate,
+										ns1#VacationAmount: entry01.ns1#VacationAmount,
+										ns1#VacationPercentage: entry01.ns1#VacationPercentage
+									}
+								}))
+							},
+							ns1#DateOfHire: {
+								ns1#XmlDateTime: entry.ns1#DateOfHire.ns1#XmlDateTime
+							},
+							ns1#OtherBenefitEarnings: {
+								((entry.ns1#OtherBenefitEarnings.*ns1#Entry default [] ) map ((entry01 , indexOfEntry01) -> {
+									ns1#Entry @(action: entry01.@action): {
+										ns1#CarAllowanceAmount: entry01.ns1#CarAllowanceAmount,
+										ns1#CommissionsAmount: entry01.ns1#CommissionsAmount,
+										ns1#CostLivingAllowanceAmount: entry01.ns1#CostLivingAllowanceAmount,
+										ns1#DifferentialsAmount: entry01.ns1#DifferentialsAmount,
+										ns1#FromDate: entry01.ns1#FromDate,
+										ns1#InLieuAmount: entry01.ns1#InLieuAmount,
+										ns1#MandatoryOTAmount: entry01.ns1#MandatoryOTAmount,
+										ns1#MileageAmount: entry01.ns1#MileageAmount,
+										ns1#PremiumsAmount: entry01.ns1#PremiumsAmount,
+										ns1#RoomBoardAmount: entry01.ns1#RoomBoardAmount,
+										ns1#ShiftDifferentialAmount: entry01.ns1#ShiftDifferentialAmount,
+										ns1#TipsGratuitiesAmount: entry01.ns1#TipsGratuitiesAmount,
+										ns1#ToDate: entry01.ns1#ToDate,
+										ns1#VoluntaryOTAmount: entry01.ns1#VoluntaryOTAmount
+									}
+								}))
+							},
+							ns1#WSIB_WorkerTaxExemption: {
+								ns1#FederalNEC_WC: entry.ns1#WSIB_WorkerTaxExemption.ns1#FederalNEC_WC,
+								ns1#ProvincialNEC_WC: entry.ns1#WSIB_WorkerTaxExemption.ns1#ProvincialNEC_WC
+							}
+						}
+					}))
+				},
+				ns1#EmploymentLengthMonth_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#EmploymentLengthMonth_WC,
+				ns1#EmploymentLengthYear_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#EmploymentLengthYear_WC,
+				ns1#getSetRelationship: {
+					((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#getSetRelationship.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+						ns1#Entry: entry
+					}))
+				},
+				ns1#HireDate: {
+					ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#HireDate.ns1#XmlDateTime
+				},
+				ns1#IsWorkerUnionMember_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#IsWorkerUnionMember_WC,
+				ns1#Occupation: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#Occupation,
+				ns1#ReferenceNumber_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#ReferenceNumber_WC,
+				ns1#Representation_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#Representation_WC,
+				ns1#VerbalClaimFile_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#VerbalClaimFile_WC,
+				ns1#WSIB_EarningsOnIntake: {
+					ns1#ActEarningLastDay: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#ActEarningLastDay,
+					ns1#AwardPayments: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#AwardPayments,
+					ns1#CarAllowance: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#CarAllowance,
+					ns1#CheckConcurrentEmployer: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#CheckConcurrentEmployer,
+					ns1#CheckVacationPay: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#CheckVacationPay,
+					ns1#Commissions: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#Commissions,
+					ns1#ConcurrentEmployment: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#ConcurrentEmployment,
+					ns1#CostOfLivingAllowance: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#CostOfLivingAllowance,
+					ns1#DateLastWorked: {
+						ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#DateLastWorked.ns1#XmlDateTime
+					},
+					ns1#DateOfChange: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#DateOfChange,
+					ns1#DateOfHireLessThanFourWks: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#DateOfHireLessThanFourWks,
+					ns1#Differentials: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#Differentials,
+					ns1#DisabilityCarrierPaid: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#DisabilityCarrierPaid,
+					ns1#DividendsProfitSharing: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#DividendsProfitSharing,
+					ns1#EmergencyWorker: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#EmergencyWorker,
+					ns1#FederalJobProgram: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#FederalJobProgram,
+					ns1#HiredUnionHall: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#HiredUnionHall,
+					ns1#InLieuPayment: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#InLieuPayment,
+					ns1#JobChangeInFourWks: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#JobChangeInFourWks,
+					ns1#LearnerPupil: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#LearnerPupil,
+					ns1#MandatoryOvertime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#MandatoryOvertime,
+					ns1#Mileage: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#Mileage,
+					ns1#NormEarningLastDay: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#NormEarningLastDay,
+					ns1#NormHoursLastWorkedFromDate: {
+						ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#NormHoursLastWorkedFromDate.ns1#XmlDateTime
+					},
+					ns1#NormHoursLastWorkedToDate: {
+						ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#NormHoursLastWorkedToDate.ns1#XmlDateTime
+					},
+					ns1#OntarioWorks: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#OntarioWorks,
+					ns1#OptionalInsurance: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#OptionalInsurance,
+					ns1#PaidDuringRecovery: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#PaidDuringRecovery,
+					ns1#PartialGrossRecovering: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#PartialGrossRecovering,
+					ns1#PartialPercentRecovering: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#PartialPercentRecovering,
+					ns1#Premiums: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#Premiums,
+					ns1#ProductionBonuses: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#ProductionBonuses,
+					ns1#RecoverPartialOrFullPay: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#RecoverPartialOrFullPay,
+					ns1#RegisteredApprentice: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#RegisteredApprentice,
+					ns1#RoomBoard: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#RoomBoard,
+					ns1#SeasonalWorker: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#SeasonalWorker,
+					ns1#ShiftDifferentials: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#ShiftDifferentials,
+					ns1#ShutdownLastFourWks: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#ShutdownLastFourWks,
+					ns1#SummerStudent: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#SummerStudent,
+					ns1#Superintendent: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#Superintendent,
+					ns1#TipsGratuities: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#TipsGratuities,
+					ns1#TotalGrossEarningDOC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#TotalGrossEarningDOC,
+					ns1#TotalGrossEarningDOH: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#TotalGrossEarningDOH,
+					ns1#UnpaidTrainee: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#UnpaidTrainee,
+					ns1#VoluntaryOvertime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#VoluntaryOvertime,
+					ns1#VolunteerForceMember: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#VolunteerForceMember,
+					ns1#WSIB_IntakeWorkSchedule: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EarningsOnIntake.ns1#WSIB_IntakeWorkSchedule
+				},
+				ns1#WSIB_EmployerRelation_Ext: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_EmployerRelation_Ext,
+				ns1#WSIB_IsSpouseRelative: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_IsSpouseRelative,
+				ns1#WSIB_PreAccidentWorkSchedule: {
+					ns1#entity-IrregularSchedule_WC: {
+						ns1#WSIB_WeeklySchedule: {
+							((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_PreAccidentWorkSchedule.ns1#entity-IrregularSchedule_WC.ns1#WSIB_WeeklySchedule.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+								ns1#Entry @(action: entry.@action): {
+									ns1#ShiftDays: entry.ns1#ShiftDays,
+									ns1#WeeklyAmount: entry.ns1#WeeklyAmount,
+									ns1#WeeklyFromDate: {
+										ns1#XmlDateTime: entry.ns1#WeeklyFromDate.ns1#XmlDateTime
+									},
+									ns1#WeeklyHours: entry.ns1#WeeklyHours,
+									ns1#WeeklyToDate: {
+										ns1#XmlDateTime: entry.ns1#WeeklyToDate.ns1#XmlDateTime
+									}
+								}
+							}))
+						}
+					},
+					ns1#entity-RegularSchedule_WC: {
+						ns1#WSIB_WeeklySchedule: {
+							((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_PreAccidentWorkSchedule.ns1#entity-RegularSchedule_WC.ns1#WSIB_WeeklySchedule.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+								ns1#Entry @(action: entry.@action): {
+									ns1#FridayHours: entry.ns1#FridayHours,
+									ns1#MondayHours: entry.ns1#MondayHours,
+									ns1#SaturdayHours: entry.ns1#SaturdayHours,
+									ns1#SundayHours: entry.ns1#SundayHours,
+									ns1#ThursdayHours: entry.ns1#ThursdayHours,
+									ns1#TuesdayHours: entry.ns1#TuesdayHours,
+									ns1#WednesdayHours: entry.ns1#WednesdayHours
+								}
+							}))
+						}
+					},
+					ns1#entity-ShiftSchedule_WC: {
+						ns1#HoursPerShift: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_PreAccidentWorkSchedule.ns1#entity-ShiftSchedule_WC.ns1#HoursPerShift,
+						ns1#NumDaysOff: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_PreAccidentWorkSchedule.ns1#entity-ShiftSchedule_WC.ns1#NumDaysOff,
+						ns1#NumDaysOn: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_PreAccidentWorkSchedule.ns1#entity-ShiftSchedule_WC.ns1#NumDaysOn,
+						ns1#NumWeeksInCycle: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_PreAccidentWorkSchedule.ns1#entity-ShiftSchedule_WC.ns1#NumWeeksInCycle
+					}
+				},
+				ns1#WSIB_WorkArrange_Ext: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_WorkArrange_Ext,
+				ns1#WSIB_WorkProgram_Ext: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#EmploymentData.ns1#WSIB_WorkProgram_Ext
+			},
+			ns1#ExposureEnded: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ExposureEnded,
+			ns1#GECACounterSigned_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#GECACounterSigned_WC,
+			ns1#GECAThirdParty_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#GECAThirdParty_WC,
+			ns1#HealthCare_WC: {
+				ns1#EmployerHCReceivedDate: {
+					ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#EmployerHCReceivedDate.ns1#XmlDateTime
+				},
+				ns1#ExpMedVisitDate: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ExpMedVisitDate,
+				ns1#HCReceived: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#HCReceived,
+				ns1#HCReceivedDate: {
+					ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#HCReceivedDate.ns1#XmlDateTime
+				},
+				ns1#HCReceivedWorker: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#HCReceivedWorker,
+				ns1#InjuryTreatedLocation: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#InjuryTreatedLocation,
+				ns1#MedicalVisitDateKnown: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#MedicalVisitDateKnown,
+				ns1#ProviderContact: {
+					ns1#Name: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ProviderContact.ns1#Name,
+					ns1#PrimaryAddress: {
+						ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ProviderContact.ns1#PrimaryAddress.ns1#AddressLine1,
+						ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ProviderContact.ns1#PrimaryAddress.ns1#AddressLine2,
+						ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ProviderContact.ns1#PrimaryAddress.ns1#AddressLine3,
+						ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ProviderContact.ns1#PrimaryAddress.ns1#City,
+						ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ProviderContact.ns1#PrimaryAddress.ns1#Country,
+						ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ProviderContact.ns1#PrimaryAddress.ns1#PostalCode,
+						ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#HealthCare_WC.ns1#ProviderContact.ns1#PrimaryAddress.ns1#State
+					}
+				}
+			},
+			ns1#LocationCode: {
+				ns1#Address: {
+					ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LocationCode.ns1#Address.ns1#AddressLine1,
+					ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LocationCode.ns1#Address.ns1#AddressLine2,
+					ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LocationCode.ns1#Address.ns1#AddressLine3,
+					ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LocationCode.ns1#Address.ns1#City,
+					ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LocationCode.ns1#Address.ns1#Country,
+					ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LocationCode.ns1#Address.ns1#PostalCode
+				}
+			},
+			ns1#LossDate: {
+				ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossDate.ns1#XmlDateTime
+			},
+			ns1#LossTimeRTW_WC: {
+				ns1#LostTimeAnticipation: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#LostTimeAnticipation,
+				ns1#LostTimeDueToInjury: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#LostTimeDueToInjury,
+				ns1#MWAcceptance: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#MWAcceptance,
+				ns1#MWDateOfOffer: {
+					ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#MWDateOfOffer.ns1#XmlDateTime
+				},
+				ns1#MWDeclineReason: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#MWDeclineReason,
+				ns1#NoRTWModifiedWorkOffered: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#NoRTWModifiedWorkOffered,
+				ns1#ReturnDateKnown: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#ReturnDateKnown,
+				ns1#ReturnedToWork: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#ReturnedToWork,
+				ns1#RTWWorkDate: {
+					ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#RTWWorkDate.ns1#XmlDateTime
+				},
+				ns1#TypeOfReturnedWork: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#TypeOfReturnedWork,
+				ns1#WSIB_ExpectedRTWDate: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#WSIB_ExpectedRTWDate,
+				ns1#WSIB_LostTimeFirstDate: {
+					ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#WSIB_LostTimeFirstDate.ns1#XmlDateTime
+				},
+				ns1#WSIB_NoModifiedWorkReason: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#WSIB_NoModifiedWorkReason,
+				ns1#WSIB_RTWIsWageLoss: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#WSIB_RTWIsWageLoss,
+				ns1#WSIB_UnknownRTWDate: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#LossTimeRTW_WC.ns1#WSIB_UnknownRTWDate
+			},
+			ns1#PeriodOfOnsetTo_WC: {
+				ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#PeriodOfOnsetTo_WC.ns1#XmlDateTime
+			},
+			ns1#Policy: {
+				ns1#AccountNumber: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#AccountNumber,
+				ns1#insured: {
+					ns1#EmailAddress1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#EmailAddress1,
+					ns1#Name: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#Name,
+					ns1#PrimaryAddress: {
+						ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#PrimaryAddress.ns1#AddressLine1,
+						ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#PrimaryAddress.ns1#AddressLine2,
+						ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#PrimaryAddress.ns1#AddressLine3,
+						ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#PrimaryAddress.ns1#City,
+						ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#PrimaryAddress.ns1#Country,
+						ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#PrimaryAddress.ns1#PostalCode,
+						ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#PrimaryAddress.ns1#State
+					},
+					ns1#PrimaryPhoneValue: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#PrimaryPhoneValue,
+					ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#insured.ns1#WorkPhone
+				},
+				ns1#WSIB_CRANumber: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#WSIB_CRANumber,
+				ns1#WSIB_FirmNumber: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#WSIB_FirmNumber,
+				ns1#WSIB_HRSDC_Flag: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#WSIB_HRSDC_Flag,
+				ns1#WSIB_IJTA_ActiveFlag: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#WSIB_IJTA_ActiveFlag,
+				ns1#WSIB_PrimaryCUCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#WSIB_PrimaryCUCode,
+				ns1#WSIB_RateGroupDescription: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Policy.ns1#WSIB_RateGroupDescription
+			},
+			ns1#PriorSimilarClaimYesNo_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#PriorSimilarClaimYesNo_WC,
+			ns1#PriorSimilarCond_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#PriorSimilarCond_WC,
+			ns1#PriorSimilarRelDesc_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#PriorSimilarRelDesc_WC,
+			ns1#PriorSimilarSameArea_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#PriorSimilarSameArea_WC,
+			ns1#Privacy_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#Privacy_WC,
+			ns1#PsycholPhysicalInjury_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#PsycholPhysicalInjury_WC,
+			ns1#RelationToPersonReporting_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#RelationToPersonReporting_WC,
+			ns1#reportedto_WC: {
+				ns1#entity-Person: {
+					ns1#CellPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reportedto_WC.ns1#entity-Person.ns1#CellPhone,
+					ns1#FirstName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reportedto_WC.ns1#entity-Person.ns1#FirstName,
+					ns1#LastName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reportedto_WC.ns1#entity-Person.ns1#LastName
+				},
+				ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reportedto_WC.ns1#WorkPhone
+			},
+			ns1#reporter: {
+				ns1#EmailAddress1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reporter.ns1#EmailAddress1,
+				ns1#FirstName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reporter.ns1#FirstName,
+				ns1#LastName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reporter.ns1#LastName,
+				ns1#MiddleName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reporter.ns1#MiddleName,
+				ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#reporter.ns1#WorkPhone
+			},
+			ns1#SignatAknlgmt_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#SignatAknlgmt_WC,
+			ns1#ThirdPartyRespble_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#ThirdPartyRespble_WC,
+			ns1#thirdpartyresponsible_WC: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#thirdpartyresponsible_WC.*ns1#Entry default []) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#entity-Person: {
+							ns1#FirstName: entry.ns1#entity-Person.ns1#FirstName,
+							ns1#LastName: entry.ns1#entity-Person.ns1#LastName
+						},
+						ns1#AlternatePhone: entry.ns1#AlternatePhone,
+						ns1#WorkPhone: entry.ns1#WorkPhone,
+						ns1#WSIB_ThirdPartyOrganization: entry.ns1#WSIB_ThirdPartyOrganization
+					}
+				}))
+			},
+			ns1#TimeRptdToEmployer: {
+				ns1#XmlDateTime: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#TimeRptdToEmployer.ns1#XmlDateTime
+			},
+			ns1#witness: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#witness.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#AlternatePhone: entry.ns1#AlternatePhone,
+						ns1#FirstName: entry.ns1#FirstName,
+						ns1#LastName: entry.ns1#LastName,
+						ns1#Occupation: entry.ns1#Occupation,
+						ns1#WorkPhone: entry.ns1#WorkPhone
+					}
+				}))
+			},
+			ns1#WorkerHAVS_WC: {
+				ns1#WorkerHAVSBusType_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSBusType_WC,
+				ns1#WorkerHAVSContact: {
+					ns1#Name: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSContact.ns1#Name,
+					ns1#PrimaryAddress: {
+						ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSContact.ns1#PrimaryAddress.ns1#AddressLine1,
+						ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSContact.ns1#PrimaryAddress.ns1#AddressLine2,
+						ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSContact.ns1#PrimaryAddress.ns1#AddressLine3,
+						ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSContact.ns1#PrimaryAddress.ns1#City,
+						ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSContact.ns1#PrimaryAddress.ns1#Country,
+						ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSContact.ns1#PrimaryAddress.ns1#PostalCode,
+						ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSContact.ns1#PrimaryAddress.ns1#State
+					}
+				},
+				ns1#WorkerHAVSFirstEmploy_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSFirstEmploy_WC,
+				ns1#WorkerHAVSLayoffDate_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSLayoffDate_WC,
+				ns1#WorkerHAVSPastClaimCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WorkerHAVSPastClaimCheck_WC,
+				ns1#WSIB_HAVSNIHLEmployType: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerHAVS_WC.ns1#WSIB_HAVSNIHLEmployType
+			},
+			ns1#WorkerNIHL_WC: {
+				ns1#CurrEmployedCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#CurrEmployedCheck_WC,
+				ns1#DateFirstSought_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#DateFirstSought_WC,
+				ns1#dbLevelCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#dbLevelCheck_WC,
+				ns1#ENTContact: {
+					ns1#Name: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#Name,
+					ns1#PrimaryAddress: {
+						ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#PrimaryAddress.ns1#AddressLine1,
+						ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#PrimaryAddress.ns1#AddressLine2,
+						ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#PrimaryAddress.ns1#AddressLine3,
+						ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#PrimaryAddress.ns1#City,
+						ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#PrimaryAddress.ns1#Country,
+						ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#PrimaryAddress.ns1#PostalCode,
+						ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#PrimaryAddress.ns1#State
+					},
+					ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTContact.ns1#WorkPhone
+				},
+				ns1#ENTDate_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTDate_WC,
+				ns1#ENTSpecCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#ENTSpecCheck_WC,
+				ns1#FNOLHearing_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#FNOLHearing_WC,
+				ns1#FreqNoiseOutside_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#FreqNoiseOutside_WC,
+				ns1#HearingAidCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingAidCheck_WC,
+				ns1#HearingTestCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestCheck_WC,
+				ns1#HearingTestContact: {
+					ns1#Name: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#Name,
+					ns1#PrimaryAddress: {
+						ns1#AddressLine1: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#PrimaryAddress.ns1#AddressLine1,
+						ns1#AddressLine2: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#PrimaryAddress.ns1#AddressLine2,
+						ns1#AddressLine3: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#PrimaryAddress.ns1#AddressLine3,
+						ns1#City: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#PrimaryAddress.ns1#City,
+						ns1#Country: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#PrimaryAddress.ns1#Country,
+						ns1#PostalCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#PrimaryAddress.ns1#PostalCode,
+						ns1#State: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#PrimaryAddress.ns1#State
+					},
+					ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestContact.ns1#WorkPhone
+				},
+				ns1#HearingTestDate_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#HearingTestDate_WC,
+				ns1#NoiseOutsideWorkCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#NoiseOutsideWorkCheck_WC,
+				ns1#RetiredCheck_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#RetiredCheck_WC,
+				ns1#RetiredDate_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#RetiredDate_WC,
+				ns1#RingingEars_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#RingingEars_WC,
+				ns1#TypeNoiseOutside_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#TypeNoiseOutside_WC,
+				ns1#Union_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#Union_WC,
+				ns1#UnionContact: {
+					ns1#entity-Person: {
+						ns1#FirstName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#UnionContact.ns1#entity-Person.ns1#FirstName,
+						ns1#LastName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#UnionContact.ns1#entity-Person.ns1#LastName
+					},
+					ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#UnionContact.ns1#WorkPhone
+				},
+				ns1#UnionLocal_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#UnionLocal_WC,
+				ns1#WorkerNIHLGradSud_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WorkerNIHL_WC.ns1#WorkerNIHLGradSud_WC
+			},
+			ns1#WSIB_Assailant: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Assailant.*ns1#Entry default []) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#FirstName: entry.ns1#FirstName,
+						ns1#LastName: entry.ns1#LastName
+					}
+				}))
+			},
+			ns1#WSIB_ClaimFatalityType: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ClaimFatalityType,
+			ns1#WSIB_ClaimFileSecure: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ClaimFileSecure,
+			ns1#WSIB_HealthPymtInd_WC: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_HealthPymtInd_WC,
+			ns1#WSIB_IntakeChannel: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_IntakeChannel,
+			ns1#WSIB_KOFAX_ClaimType: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_KOFAX_ClaimType,
+			ns1#WSIB_KOFAX_QType: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_KOFAX_QType,
+			ns1#WSIB_KOFAX_SpecialHandlingCode: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_KOFAX_SpecialHandlingCode,
+			ns1#WSIB_KofaxBatchID: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_KofaxBatchID,
+			ns1#WSIB_MinistryOfLabourContact: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_MinistryOfLabourContact.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#FirstName: entry.ns1#FirstName,
+						ns1#LastName: entry.ns1#LastName,
+						ns1#Occupation: entry.ns1#Occupation,
+						ns1#WorkPhone: entry.ns1#WorkPhone,
+						ns1#WSIB_Position: entry.ns1#WSIB_Position
+					}
+				}))
+			},
+			ns1#wsib_nextofkin: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#wsib_nextofkin.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#FirstName: entry.ns1#FirstName,
+						ns1#LastName: entry.ns1#LastName,
+						ns1#Occupation: entry.ns1#Occupation,
+						ns1#WorkPhone: entry.ns1#WorkPhone
+					}
+				}))
+			},
+			ns1#WSIB_NextOfKinKnown: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_NextOfKinKnown,
+			ns1#WSIB_Other_Insurance_CO: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Other_Insurance_CO.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#Name: entry.ns1#Name,
+						ns1#WorkPhone: entry.ns1#WorkPhone
+					}
+				}))
+			},
+			ns1#WSIB_PEIRCEIR: {
+				ns1#WSIB_AvailSubstanceInfoCheck: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_AvailSubstanceInfoCheck,
+				ns1#WSIB_CeirExposureDetail: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_CeirExposureDetail,
+				ns1#WSIB_ChemicalSubstanceExposed: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_ChemicalSubstanceExposed,
+				ns1#WSIB_ControlMeasures: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_ControlMeasures,
+				ns1#WSIB_EmergMeasures: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_EmergMeasures,
+				ns1#WSIB_EnvSamplingCheck: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_EnvSamplingCheck,
+				ns1#WSIB_ExposureDetailDesc: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_ExposureDetailDesc,
+				ns1#WSIB_ExposureSource: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_ExposureSource,
+				ns1#WSIB_ExposureTypeOtherDesc: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_ExposureTypeOtherDesc,
+				ns1#WSIB_HSRepCheck: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_HSRepCheck,
+				ns1#WSIB_JHSCCheck: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_JHSCCheck,
+				ns1#WSIB_LocationInAffectedArea: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_LocationInAffectedArea,
+				ns1#WSIB_MinEnvOnPremises: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_MinEnvOnPremises,
+				ns1#WSIB_MinLabourOnPremises: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_MinLabourOnPremises,
+				ns1#WSIB_NatureOfBusiness: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_NatureOfBusiness,
+				ns1#WSIB_PeirCeirExposureCat: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_PeirCeirExposureCat,
+				ns1#WSIB_PeirCeirExposureType: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_PeirCeirExposureType,
+				ns1#WSIB_PeirCeirPriorClaimCheck: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_PeirCeirPriorClaimCheck,
+				ns1#WSIB_PeirCeirSubstance: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_PeirCeirSubstance,
+				ns1#WSIB_PeirExposureDetail: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_PeirExposureDetail,
+				ns1#WSIB_RepToMinEnvCheck: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_RepToMinEnvCheck,
+				ns1#WSIB_RepToMinLabourCheck: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_RepToMinLabourCheck,
+				ns1#WSIB_SubstanceOtherDesc: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_SubstanceOtherDesc,
+				ns1#WSIB_UnionNameLocal: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_UnionNameLocal,
+				ns1#WSIB_WorkerInConstruction: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_WorkerInConstruction,
+				ns1#WSIB_WornPPE: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_PEIRCEIR.ns1#WSIB_WornPPE
+			},
+			ns1#WSIB_Police: {
+				((payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Police.*ns1#Entry default [] ) map ((entry , indexOfEntry) -> {
+					ns1#Entry @(action: entry.@action): {
+						ns1#FirstName: entry.ns1#FirstName,
+						ns1#LastName: entry.ns1#LastName,
+						ns1#Occupation: entry.ns1#Occupation,
+						ns1#WorkPhone: entry.ns1#WorkPhone,
+						ns1#WSIB_Position: entry.ns1#WSIB_Position
+					}
+				}))
+			},
+			ns1#WSIB_ReferenceNumber: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ReferenceNumber,
+			ns1#WSIB_RTWContact: {
+				ns1#FirstName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_RTWContact.ns1#FirstName,
+				ns1#LastName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_RTWContact.ns1#LastName,
+				ns1#Occupation: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_RTWContact.ns1#Occupation,
+				ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_RTWContact.ns1#WorkPhone,
+				ns1#WSIB_Position: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_RTWContact.ns1#WSIB_Position
+			},
+			ns1#WSIB_ThirdParty: {
+				ns1#WSIB_CarCheckMVA: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ThirdParty.ns1#WSIB_CarCheckMVA,
+				ns1#WSIB_KnowAssailant: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ThirdParty.ns1#WSIB_KnowAssailant,
+				ns1#WSIB_MVAWorkerFault: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ThirdParty.ns1#WSIB_MVAWorkerFault,
+				ns1#WSIB_SlipWorkerFault: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ThirdParty.ns1#WSIB_SlipWorkerFault,
+				ns1#WSIB_ThirdPartyMachine: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ThirdParty.ns1#WSIB_ThirdPartyMachine,
+				ns1#WSIB_ThirdPartyMVA: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_ThirdParty.ns1#WSIB_ThirdPartyMVA
+			},
+			ns1#WSIB_Worker_Rep_PE_Elements: {
+				ns1#FirstName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Worker_Rep_PE_Elements.ns1#FirstName,
+				ns1#LastName: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Worker_Rep_PE_Elements.ns1#LastName,
+				ns1#LicenseNumber: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Worker_Rep_PE_Elements.ns1#LicenseNumber,
+				ns1#WorkPhone: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Worker_Rep_PE_Elements.ns1#WorkPhone,
+				ns1#WSIB_LicenseNumber: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Worker_Rep_PE_Elements.ns1#WSIB_LicenseNumber,
+				ns1#WSIB_ParalegalLicenseNumber: payload.ns0#saveInProgresseForm6eForm7.ns0#request.ns1#WSIB_Worker_Rep_PE_Elements.ns1#WSIB_ParalegalLicenseNumber
+			}
+		},
+		ns0#requestId: payload.ns0#saveInProgresseForm6eForm7.ns0#requestId
+	}
+}]]></dw:set-payload>  
+        </dw:transform-message>  
+    </flow>
+    <flow name="mule_guideware_integrationpoc_2Flow2"> 
+        <file:inbound-endpoint path="src\main\resources\input1" connector-ref="FileRead" responseTimeout="10000" doc:name="FileRead"></file:inbound-endpoint>  
+        <set-variable variableName="Payload1" value="#[payload]" doc:name="Variable"></set-variable>  
+        <mulexml:dom-to-xml-transformer doc:name="DOM to XML"></mulexml:dom-to-xml-transformer>  
+        <file:outbound-endpoint path="src\main\resources\input1" outputPattern="Input2.xml" connector-ref="InitialSave1" responseTimeout="10000" doc:name="File"></file:outbound-endpoint>  
+    </flow>
+    <flow name="mule_guideware_integrationpoc_2Flow"> 
+        <file:inbound-endpoint path="src\main\resources\input" responseTimeout="10000" doc:name="Process_Request" connector-ref="ProcessRequest"></file:inbound-endpoint>  
+        <set-variable variableName="Payload" value="#[payload]" doc:name="Save Payload"></set-variable>  
+        <dw:transform-message doc:name="Transform Payload"> 
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+%namespace ns18
+http://wsib.on.ca/cc/webservices/saveinprogress/service
+---	
+
+payload
+
+]]></dw:set-payload>  
+            <dw:set-property propertyName="soap.gw-authentication"><![CDATA[%dw 1.0
+%output application/xml
+%namespace ns0 http://guidewire.com/ws/soapheaders
+---
+{
+	ns0#authentication: {
+		ns0#username: "su",
+		ns0#password: "gw"
+	}
+}]]></dw:set-property>  
+        </dw:transform-message>  
+        <mulexml:dom-to-xml-transformer doc:name="DOM to XML"></mulexml:dom-to-xml-transformer>  
+        <logger message="Logger1: Web service request : #[payload]" level="INFO" doc:name="Logger1"></logger>  
+        <ws:consumer config-ref="Web_Service_Consumer" operation="saveInProgresseForm6eForm7" doc:name="GW CC Web Service Consumer"></ws:consumer>  
+        <mulexml:dom-to-xml-transformer doc:name="DOM to XML"></mulexml:dom-to-xml-transformer>  
+        <file:outbound-endpoint path="src\main\resources\output" outputPattern="Output.xml" connector-ref="ProcessResponse" responseTimeout="10000" doc:name="Process_Response"></file:outbound-endpoint>  
+        <logger message="Webservice Response : #[payload]" level="INFO" doc:name="Logger2"></logger>  
+        <catch-exception-strategy doc:name="mule_guideware_integrationpoc_2Catch_Exception_Strategy"> 
+            <mulexml:dom-to-xml-transformer doc:name="DOM to XML"></mulexml:dom-to-xml-transformer>  
+            <logger message="Exception Payload : #[payload]" level="INFO" doc:name="Logger"></logger>  
+        </catch-exception-strategy>  
+    </flow>
+
+
+
+</mule>

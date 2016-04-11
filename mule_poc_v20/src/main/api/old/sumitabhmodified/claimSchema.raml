@@ -1,0 +1,143 @@
+claimSchema: |-
+    {
+      "type": "object",
+        "$schema": "http://json-schema.org/draftv4/hyper-schema",
+      "id": "http://jsonschema.net",
+      "required": true,
+      "properties": {
+        "claimInfo": {
+          "claimType": {
+            "type": "string",
+            "required": true
+          },
+          "dateOfIncident": {
+            "type": "string",
+            "required": true
+          },
+          "natureOfInjury": {
+            "type": "string",
+            "required": true
+          },
+          "accidentCategory": {
+            "type": "string",
+            "required": true
+          },
+          "primaryBodyPart": {
+            "type": "string",
+            "required": true
+          },
+          "detailedBodyPart": {
+            "type": "string",
+            "required": true
+          }  
+        },
+        "claimantInfo": {
+          "firstName": {
+            "type": "string",
+            "required": true
+          },
+          "lastName": {
+            "type": "string",
+            "required": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "required": true
+          },
+          "gender": {
+            "type": "string",
+            "required": true
+          },
+          "taxID": {
+            "type": "string",
+            "required": true
+          },
+          "occupation": {
+            "type": "string",
+            "required": true
+          },
+          "phone": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "policyInfo": {
+          "accountNumber": {
+            "type": "string",
+            "required": true
+          },
+          "businessNumber": {
+            "type": "string",
+            "required": true
+          },
+          "cuCode": {
+            "type": "string",
+            "required": true
+          },
+          "rateCode": {
+            "type": "string",
+            "required": true  
+          }
+        },
+        "employerInfo": {
+          "accountNumber": {
+            "type": "string",
+            "required": true
+          },
+          "tradeName": {
+            "type": "string",
+            "required": true
+          },
+          "legalName": {
+            "type": "string",
+            "required": true
+          },
+          "businessNumber": {
+            "type": "string",
+            "required": true
+          },
+          "primaryContactName": {
+            "type": "string",
+            "required": true
+          },
+          "primaryContactPhone": {
+            "type": "string",
+            "required": true
+          },
+          "primaryContactEmail": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "branchInfo": {
+          "street": {
+            "type": "string",
+            "required": true
+          },
+          "city": {
+            "type": "string",
+            "required": true
+          },
+          "state": {
+            "type": "string",
+            "required": true
+          },
+          "country": {
+            "type": "string",
+            "required": true
+          },
+          "postalCode": {
+            "type": "string",
+            "required": true
+          },
+          "phone": {
+            "type": "string",
+            "required": true
+          }
+        }  
+      }  
+    }

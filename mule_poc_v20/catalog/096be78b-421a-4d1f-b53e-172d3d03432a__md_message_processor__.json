@@ -1,0 +1,16 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "Claims"
+        }
+    },
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "Web_Service_Consumer",
+            "typeId": "saveInProgresseForm6eForm7"
+        }
+    },
+    "id": "096be78b-421a-4d1f-b53e-172d3d03432a",
+    "version": "5.2.0.0"
+}

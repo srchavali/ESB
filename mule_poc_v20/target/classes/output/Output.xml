@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><saveInProgresseForm6eForm7Response xmlns="http://wsib.on.ca/cc/webservices/saveinprogress/service">
+      <return xmlns:pogo="http://wsib.on.ca/cc/webservices/saveinprogress/vo">
+        <pogo:DocumentMetaDataList>
+          <Entry xmlns="http://wsib.on.ca/cc/webservices/saveinprogress/vo" xmlns:pogo="http://wsib.on.ca/cc/webservices/createclaim/kofax/vo">
+            <pogo:ClaimNumber>80050162</pogo:ClaimNumber>
+            <pogo:DocDate>2016-02-09</pogo:DocDate>
+            <pogo:DocDesc>Employer&amp;apos;s Report of Injury</pogo:DocDesc>
+            <pogo:DocName>2016-02-09-Employer&amp;apos;s Report of Injury-33199.tif</pogo:DocName>
+            <pogo:DocPublicId>cc:190</pogo:DocPublicId>
+            <pogo:DocUnitId>34769203</pogo:DocUnitId>
+          </Entry>
+        </pogo:DocumentMetaDataList>
+        <pogo:ReferenceNumber>80050162</pogo:ReferenceNumber>
+        <pogo:ReturnCode>0</pogo:ReturnCode>
+      </return>
+    </saveInProgresseForm6eForm7Response>

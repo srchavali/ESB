@@ -1,0 +1,1182 @@
+<?xml version="1.0"?>
+<xsd:schema
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:gw="http://guidewire.com/xsd"
+      xmlns="http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.sipclaimmodel"
+      targetNamespace="http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.sipclaimmodel"
+      elementFormDefault="qualified">
+  <xsd:element
+        name="Claim" type="Claim" nillable="true"/>
+  <xsd:complexType
+        name="Claim">
+    <xsd:sequence>
+      <xsd:element name="AccidentConcern_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="AccidentConcernDescription_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="AccidentConcernReason_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="AccidentWitness_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="AdditionalIntakeComments_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="AddressOwner" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Address" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AreaOfAccident_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="IsAddressForOffsiteJob_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="WSIB_EmployersPremises" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ArrayPriorClaimNumber_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="PriorSimilarClaimNumber_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BranchLocation_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="ContactWhereThisIsPrimary" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AlternatePhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="claimant" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AlternatePhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="DateOfBirth" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="EmailAddress1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="Gender" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="MiddleName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="Occupation" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressType" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="PrimaryLanguage" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="SmokerCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="SmokerCheckAmount_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="SmokerCheckAmountPerDay_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="TaxID" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WorkerSinNoExist_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_GUID" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_LanguageOfService" minOccurs="0" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClaimInjuryIncident" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AccidentCatOptns_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="AccidentIllnessCat_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="ArrayHandArmVibration_WC" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="FromDate" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+                        <xsd:element name="HrsPerDayUsedWithVibratoryTool" minOccurs="0" nillable="true" type="xsd:int" gw:type="java.lang.Integer"/>
+                        <xsd:element name="ToDate" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+                        <xsd:element name="VibratoryToolsUsed" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                      </xsd:sequence>
+                      <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ArrayHAVSEmployHistory_WC" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="HAVSEmployHistoryContact" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="WorkerHAVSOntarioCheckWC" minOccurs="0" nillable="true" type="xsd:string"/>
+                      </xsd:sequence>
+                      <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ArrayNIHLEmployHistory_WC" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="DepartmentNIHL" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="EarProtectionNIHL" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                        <xsd:element name="NIHLEmployHistoryContact" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                              <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                    <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                    <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                    <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                    <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                                    <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                    <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="StillInBusinessCheckNIHL" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                        <xsd:element name="WSIB_HAVSNIHLEmployType" minOccurs="0" nillable="true" type="xsd:string"/>
+                      </xsd:sequence>
+                      <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ArrayNoiseInducedHearingLoss_WC" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="DateSoundSurveyConducted" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+                        <xsd:element name="EmploymentFromDateWhenInjured" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+                        <xsd:element name="EmploymentToDateWhenInjured" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+                        <xsd:element name="EquipUsedWhenInjured" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="NoiseLevels" minOccurs="0" nillable="true" type="xsd:int" gw:type="java.lang.Integer"/>
+                        <xsd:element name="NoiseLevelsExposed" minOccurs="0" nillable="true" type="xsd:int" gw:type="java.lang.Integer"/>
+                        <xsd:element name="OccupationTypeWhenInjured" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="WorkAreaDescriptionWhenInjured" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                      </xsd:sequence>
+                      <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="BodyParts" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="DetailedBodyPart" minOccurs="0" nillable="true" type="xsd:string"/>
+                        <xsd:element name="PrimaryBodyPart" minOccurs="0" nillable="true" type="xsd:string"/>
+                      </xsd:sequence>
+                      <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CatastrophicCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="NatureOfAccident_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="NIHLCurrEmploySoundSurvey_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="NIHLCurrOccType_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="NIHLDateHearingProProvided_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="NIHLEmploymentFromDate_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="NIHLEmploymentToDate_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="NIHLExposureDetails_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="NIHLFullTimeWorkCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="NIHLNoiseLevelCompare_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="NIHLPrevEmploySoundSurvey_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="NIHLPrevSimCond_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="NIHLTypeOfHearingProUsed_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ClaimReportedByType_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="ClaimType_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="Contacts" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Roles" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Contact" minOccurs="0" nillable="true">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="entity-Person" minOccurs="0" nillable="true">
+                                      <xsd:complexType>
+                                        <xsd:sequence>
+                                          <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                          <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                        </xsd:sequence>
+                                      </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="AlternatePhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                    <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                    <xsd:element name="WSIB_ThirdPartyOrganization" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="NIHLwitnessEmployer" minOccurs="0" nillable="true">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                                  </xsd:sequence>
+                                </xsd:complexType>
+                              </xsd:element>
+                              <xsd:element name="Role" minOccurs="0" nillable="true" type="xsd:string"/>
+                              <xsd:element name="WitnessPosition_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="WSIB_OtherCompany" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                              <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                              <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                              <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                              <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                              <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                              <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DateRenderReportSubmitted_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DateRptdToEmployer" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeathDate" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Description" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="Documents" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Author" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="DateCreated" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="Description" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="DocUID" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="MimeType" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WSIB_DateReceived" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="WSIB_Document_Intake_Source" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="WSIB_DocumentSection" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="WSIB_FormID" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WSIB_HCPymtDocument" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="WSIB_UDID" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="employer_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="WSIB_AccountNumber" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressType" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="PrimaryContact" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="EmailAddress1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="SBN_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_TradeName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_LegalName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_ProviderID" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EmploymentData" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="BenEarningsSummary" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="BenefitEarnings" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="ComputingFactor" minOccurs="0" nillable="true" type="xsd:string"/>
+                                    <xsd:element name="PayRate" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="VacationAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="VacationPercentage" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                  </xsd:sequence>
+                                  <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="DateOfHire" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="OtherBenefitEarnings" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="CarAllowanceAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="CommissionsAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="CostLivingAllowanceAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="DifferentialsAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="FromDate" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+                                    <xsd:element name="InLieuAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="MandatoryOTAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="MileageAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="PremiumsAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="RoomBoardAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="ShiftDifferentialAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="TipsGratuitiesAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="ToDate" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+                                    <xsd:element name="VoluntaryOTAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                  </xsd:sequence>
+                                  <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="WSIB_WorkerTaxExemption" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="FederalNEC_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+                              <xsd:element name="ProvincialNEC_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                      <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="EmploymentLengthMonth_WC" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+            <xsd:element name="EmploymentLengthYear_WC" minOccurs="0" nillable="true" type="xsd:int" gw:type="java.lang.Integer"/>
+            <xsd:element name="getSetRelationship" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Entry" minOccurs="0" maxOccurs="unbounded" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="HireDate" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="IsWorkerUnionMember_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="Occupation" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="ReferenceNumber_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="Representation_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="VerbalClaimFile_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_EarningsOnIntake" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ActEarningLastDay" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                  <xsd:element name="AwardPayments" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="CarAllowance" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="CheckConcurrentEmployer" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="CheckVacationPay" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="Commissions" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="ConcurrentEmployment" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="CostOfLivingAllowance" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="DateLastWorked" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="DateOfChange" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+                  <xsd:element name="DateOfHireLessThanFourWks" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="Differentials" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="DisabilityCarrierPaid" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="DividendsProfitSharing" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="EmergencyWorker" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="FederalJobProgram" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="HiredUnionHall" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="InLieuPayment" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="JobChangeInFourWks" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="LearnerPupil" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="MandatoryOvertime" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="Mileage" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="NormEarningLastDay" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                  <xsd:element name="NormHoursLastWorkedFromDate" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="NormHoursLastWorkedToDate" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="OntarioWorks" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="OptionalInsurance" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="PaidDuringRecovery" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="PartialGrossRecovering" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                  <xsd:element name="PartialPercentRecovering" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                  <xsd:element name="Premiums" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="ProductionBonuses" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="RecoverPartialOrFullPay" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="RegisteredApprentice" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="RoomBoard" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="SeasonalWorker" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="ShiftDifferentials" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="ShutdownLastFourWks" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="SummerStudent" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="Superintendent" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="TipsGratuities" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="TotalGrossEarningDOC" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                  <xsd:element name="TotalGrossEarningDOH" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                  <xsd:element name="UnpaidTrainee" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="VoluntaryOvertime" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="VolunteerForceMember" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+                  <xsd:element name="WSIB_IntakeWorkSchedule" minOccurs="0" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="WSIB_EmployerRelation_Ext" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_IsSpouseRelative" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_PreAccidentWorkSchedule" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="entity-IrregularSchedule_WC" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="WSIB_WeeklySchedule" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="ShiftDays" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="WeeklyAmount" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="WeeklyFromDate" minOccurs="0" nillable="true">
+                                      <xsd:complexType>
+                                        <xsd:sequence>
+                                          <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                                        </xsd:sequence>
+                                      </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="WeeklyHours" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="WeeklyToDate" minOccurs="0" nillable="true">
+                                      <xsd:complexType>
+                                        <xsd:sequence>
+                                          <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                                        </xsd:sequence>
+                                      </xsd:complexType>
+                                    </xsd:element>
+                                  </xsd:sequence>
+                                  <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="entity-RegularSchedule_WC" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="WSIB_WeeklySchedule" minOccurs="0" nillable="true">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                  <xsd:sequence>
+                                    <xsd:element name="FridayHours" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="MondayHours" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="SaturdayHours" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="SundayHours" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="ThursdayHours" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="TuesdayHours" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                    <xsd:element name="WednesdayHours" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                                  </xsd:sequence>
+                                  <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+                                </xsd:complexType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="entity-ShiftSchedule_WC" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="HoursPerShift" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                        <xsd:element name="NumDaysOff" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                        <xsd:element name="NumDaysOn" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                        <xsd:element name="NumWeeksInCycle" minOccurs="0" nillable="true" type="xsd:decimal" gw:type="java.math.BigDecimal"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="WSIB_WorkArrange_Ext" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_WorkProgram_Ext" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExposureEnded" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+      <xsd:element name="GECACounterSigned_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="GECAThirdParty_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="HealthCare_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EmployerHCReceivedDate" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ExpMedVisitDate" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="HCReceived" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="HCReceivedDate" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="HCReceivedWorker" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="InjuryTreatedLocation" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="MedicalVisitDateKnown" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="ProviderContact" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                        <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LocationCode" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Address" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                  <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LossDate" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LossTimeRTW_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="LostTimeAnticipation" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="LostTimeDueToInjury" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="MWAcceptance" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="MWDateOfOffer" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MWDeclineReason" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="NoRTWModifiedWorkOffered" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="ReturnDateKnown" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="ReturnedToWork" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="RTWWorkDate" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="TypeOfReturnedWork" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="WSIB_ExpectedRTWDate" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="WSIB_LostTimeFirstDate" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="WSIB_NoModifiedWorkReason" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_RTWIsWageLoss" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_UnknownRTWDate" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PeriodOfOnsetTo_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Policy" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AccountNumber" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="insured" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="EmailAddress1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                        <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="PrimaryPhoneValue" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="WSIB_CRANumber" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_FirmNumber" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_HRSDC_Flag" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_IJTA_ActiveFlag" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_PrimaryCUCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_RateGroupDescription" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PriorSimilarClaimYesNo_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="PriorSimilarCond_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="PriorSimilarRelDesc_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="PriorSimilarSameArea_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="Privacy_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="PsycholPhysicalInjury_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="RelationToPersonReporting_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="reportedto_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="entity-Person" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="CellPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="reporter" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EmailAddress1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="MiddleName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SignatAknlgmt_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="ThirdPartyRespble_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="thirdpartyresponsible_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="entity-Person" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="AlternatePhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WSIB_ThirdPartyOrganization" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TimeRptdToEmployer" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="XmlDateTime" minOccurs="0" nillable="true" type="xsd:string" gw:type="gw.xml.date.XmlDateTime"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="witness" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AlternatePhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Occupation" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WorkerHAVS_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="WorkerHAVSBusType_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WorkerHAVSContact" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                        <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="WorkerHAVSFirstEmploy_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="WorkerHAVSLayoffDate_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="WorkerHAVSPastClaimCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_HAVSNIHLEmployType" minOccurs="0" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WorkerNIHL_WC" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CurrEmployedCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="DateFirstSought_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="dbLevelCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="ENTContact" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                        <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ENTDate_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="ENTSpecCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="FNOLHearing_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="FreqNoiseOutside_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="HearingAidCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="HearingTestCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="HearingTestContact" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="PrimaryAddress" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="AddressLine1" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine2" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="AddressLine3" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="City" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="Country" minOccurs="0" nillable="true" type="xsd:string"/>
+                        <xsd:element name="PostalCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="State" minOccurs="0" nillable="true" type="xsd:string"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="HearingTestDate_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="NoiseOutsideWorkCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="RetiredCheck_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="RetiredDate_WC" minOccurs="0" nillable="true" type="xsd:dateTime" gw:type="java.util.Date"/>
+            <xsd:element name="RingingEars_WC" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="TypeNoiseOutside_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="Union_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="UnionContact" minOccurs="0" nillable="true">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="entity-Person" minOccurs="0" nillable="true">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                        <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="UnionLocal_WC" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WorkerNIHLGradSud_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WSIB_Assailant" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WSIB_ClaimFatalityType" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="WSIB_ClaimFileSecure" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="WSIB_HealthPymtInd_WC" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="WSIB_IntakeChannel" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="WSIB_KOFAX_ClaimType" minOccurs="0" nillable="true" type="xsd:string"/>
+      <xsd:element name="WSIB_KOFAX_QType" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="WSIB_KOFAX_SpecialHandlingCode" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="WSIB_KofaxBatchID" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="WSIB_MinistryOfLabourContact" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Occupation" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WSIB_Position" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="wsib_nextofkin" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Occupation" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WSIB_NextOfKinKnown" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+      <xsd:element name="WSIB_Other_Insurance_CO" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WSIB_PEIRCEIR" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="WSIB_AvailSubstanceInfoCheck" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_CeirExposureDetail" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="WSIB_ChemicalSubstanceExposed" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_ControlMeasures" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_EmergMeasures" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_EnvSamplingCheck" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_ExposureDetailDesc" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_ExposureSource" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_ExposureTypeOtherDesc" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_HSRepCheck" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_JHSCCheck" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_LocationInAffectedArea" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_MinEnvOnPremises" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_MinLabourOnPremises" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_NatureOfBusiness" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_PeirCeirExposureCat" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="WSIB_PeirCeirExposureType" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="WSIB_PeirCeirPriorClaimCheck" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_PeirCeirSubstance" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="WSIB_PeirExposureDetail" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="WSIB_RepToMinEnvCheck" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_RepToMinLabourCheck" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_SubstanceOtherDesc" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_UnionNameLocal" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_WorkerInConstruction" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_WornPPE" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WSIB_Police" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Entry" minOccurs="0" nillable="true" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="Occupation" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                  <xsd:element name="WSIB_Position" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+                </xsd:sequence>
+                <xsd:attribute name="action" type="xsd:string" gw:type="gw.xml.xsd.ArrayAction"/>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WSIB_ReferenceNumber" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+      <xsd:element name="WSIB_RTWContact" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="Occupation" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_Position" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WSIB_ThirdParty" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="WSIB_CarCheckMVA" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_KnowAssailant" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_MVAWorkerFault" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_SlipWorkerFault" minOccurs="0" nillable="true" type="xsd:boolean" gw:type="java.lang.Boolean"/>
+            <xsd:element name="WSIB_ThirdPartyMachine" minOccurs="0" nillable="true" type="xsd:string"/>
+            <xsd:element name="WSIB_ThirdPartyMVA" minOccurs="0" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WSIB_Worker_Rep_PE_Elements" minOccurs="0" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FirstName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="LastName" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="LicenseNumber" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WorkPhone" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_LicenseNumber" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+            <xsd:element name="WSIB_ParalegalLicenseNumber" minOccurs="0" nillable="true" type="xsd:string" gw:type="java.lang.String"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+    <http:listener-config name="api-httpListenerConfig" host="0.0.0.0" port="8999" doc:name="HTTP Listener Configuration"/>
+    <apikit:config name="api-config" raml="api.raml" consoleEnabled="true" consolePath="console" doc:name="Router"/>
+    <http:listener-config name="HTTP_Listener_Configuration9001" host="0.0.0.0" port="9001" doc:name="HTTP Listener Configuration"/>
+    <file:connector name="GWRequestFile" writeToDirectory="C:\Users\srchavali\AnypointStudio\workspace\April07\mule_poc_v20\src\main\resources\input1" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"/>
+    <flow name="api-main">
+        <http:listener config-ref="api-httpListenerConfig" path="/api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="api-config" doc:name="APIkit Router"/>
+        <exception-strategy ref="api-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="apiFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration9001" path="/apitest" doc:name="HTTP_9001"/>
+        <logger message="logger 2#[payload]" level="INFO" doc:name="logger 2"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="bf13060c-7c89-464e-9ae0-0bf9d8fc85e1">
+            <dw:input-payload doc:sample="saveInProgresseForm6eForm7.xml"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+%namespace ns0 http://wsib.on.ca/cc/webservices/saveinprogress/service
+%namespace ns1 http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.sipclaimmodel
+---
+{
+	ns0#saveInProgresseForm6eForm7: {
+		ns0#request: {
+			
+		ns1#claimant: {
+			    
+			    ns1#EmailAddress1: payload.fnol.claimantInfo.email,
+				ns1#FirstName: payload.fnol.claimantInfo.firstName,
+				ns1#Gender: payload.fnol.claimantInfo.gender,
+				ns1#LastName: payload.fnol.claimantInfo.lastName,
+				ns1#Occupation: payload.fnol.claimantInfo.occupation,
+								ns1#TaxID: payload.fnol.claimantInfo.taxID,
+				ns1#WorkPhone: payload.fnol.claimantInfo.phone
+			},
+			ns1#ClaimInjuryIncident: {
+				ns1#AccidentIllnessCat_WC: payload.fnol.claimInfo.accidentCategory,
+				ns1#BodyParts: {
+					(payload map ((payload01 , indexOfPayload01) -> {
+						ns1#Entry: {
+							ns1#DetailedBodyPart: payload01.claimInfo.detailedBodyPart,
+							ns1#PrimaryBodyPart: payload01.claimInfo.primaryBodyPart
+						}
+					}))
+				},
+				ns1#NatureOfAccident_WC: payload.fnol.claimInfo.natureOfInjury
+			},
+			ns1#ClaimType_WC: payload.fnol.claimInfo.claimType,
+			ns1#DateRptdToEmployer: {
+				ns1#XmlDateTime: payload.fnol.claimInfo.dateOfIncident
+			},
+			ns1#employer_WC: {
+				ns1#WSIB_AccountNumber: payload.fnol.empoyerInfo.accountNumber,
+				ns1#PrimaryContact: {
+					ns1#EmailAddress1: payload.fnol.empoyerInfo.primaryContactEmail,
+					ns1#Name: payload.fnol.empoyerInfo.primaryContactName,
+					ns1#WorkPhone: payload.fnol.empoyerInfo.primaryContactPhone
+				},
+				ns1#SBN_WC: payload.fnol.empoyerInfo.businessNumber,
+				ns1#WSIB_TradeName: payload.fnol.empoyerInfo.tradeName,
+				ns1#WSIB_LegalName: payload.fnol.empoyerInfo.legalName
+			},
+			ns1#Policy: {
+				ns1#AccountNumber: payload.fnol.policyInfo.accountNumber,
+				ns1#WSIB_CRANumber: payload.fnol.policyInfo.businessNumber,
+				ns1#WSIB_PrimaryCUCode: payload.fnol.policyInfo.cuCode,
+				ns1#WSIB_RateGroupDescription: payload.fnol.policyInfo.rateCode
+			}
+		}
+	}
+}]]></dw:set-payload>
+            <dw:set-property propertyName="soap.gw-authentication"><![CDATA[	%dw 1.0
+	%output application/xml
+	%namespace ns0 http://guidewire.com/ws/soapheaders
+	---
+	{
+		ns0#authentication: {
+			ns0#username: "su",
+			ns0#password: "gw"
+		}
+	}
+]]></dw:set-property>
+        </dw:transform-message>
+        <logger level="INFO" doc:name="Logger"/>
+        <file:outbound-endpoint path="src\main\resources\input1" outputPattern="GWRequest.xml" connector-ref="GWRequestFile" responseTimeout="10000" doc:name="GWRequestFile"/>
+        <ws:consumer config-ref="Web_Service_Consumer" operation="saveInProgresseForm6eForm7" doc:name="Web Service Consumer"/>
+        <logger level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/register:application/json:api-config">
+        <set-payload value="{&quot;fnol&quot;:{&quot;claimInfo&quot;:{&quot;claimType&quot;:&quot;Injury&quot;,&quot;dateOfIncident&quot;:&quot;01/01/2016&quot;,&quot;natureOfInjury&quot;:&quot;Frature&quot;,&quot;accidentCategory&quot;:&quot;Fall&quot;,&quot;primaryBodyPart&quot;:&quot;Legs&quot;,&quot;detailedBodyPart&quot;:&quot;Toe&quot;},&quot;claimantInfo&quot;:{&quot;firstName&quot;:&quot;ABC&quot;,&quot;lastName&quot;:&quot;Construction&quot;,&quot;dateOfBirth&quot;:&quot;2015/02/12&quot;,&quot;gender&quot;:&quot;M&quot;,&quot;taxID&quot;:&quot;123-456-789&quot;,&quot;occupation&quot;:&quot;Construction&quot;,&quot;phone&quot;:&quot;416-234-1234&quot;,&quot;email&quot;:&quot;abc@gmail.com&quot;,&quot;street&quot;:&quot;123TestLane&quot;,&quot;city&quot;:&quot;Halifax&quot;,&quot;state&quot;:&quot;NS&quot;,&quot;country&quot;:&quot;Canada&quot;,&quot;postalCode&quot;:&quot;L1L2M2&quot;},&quot;policyInfo&quot;:{&quot;accountNumber&quot;:&quot;123-456-789&quot;,&quot;businessNumber&quot;:&quot;123-123-123&quot;,&quot;cuCode&quot;:&quot;WSIB_CU0411-099Choice&quot;,&quot;rateCode&quot;:&quot;WSIB_RateGroup30Choice&quot;},&quot;empoyerInfo&quot;:{&quot;accountNumber&quot;:&quot;123-456-789&quot;,&quot;tradeName&quot;:&quot;ABCConstruction&quot;,&quot;legalName&quot;:&quot;ABCconstructionsInc&quot;,&quot;businessNumber&quot;:&quot;123-123-123&quot;,&quot;primaryContactName&quot;:&quot;ABCOwner&quot;,&quot;primaryContactPhone&quot;:&quot;416-123-1234&quot;,&quot;primaryContactEmail&quot;:&quot;bcs@gmail.com&quot;},&quot;branchInfo&quot;:{&quot;street&quot;:&quot;123TesterLn&quot;,&quot;city&quot;:&quot;Toronto&quot;,&quot;state&quot;:&quot;ON&quot;,&quot;country&quot;:&quot;Canada&quot;,&quot;postalCode&quot;:&quot;M1M1M1&quot;,&quot;phone&quot;:&quot;905-123-4567&quot;}}}" doc:name="Set Payload"/>
+        <flow-ref name="apiFlow" doc:name="apiFlow"/>
+        <logger level="INFO" doc:name="Logger"/>
+    </flow>
+    <apikit:mapping-exception-strategy name="api-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>

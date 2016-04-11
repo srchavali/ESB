@@ -1,0 +1,19 @@
+#%RAML 0.8
+baseUri: http://mocksvc.mulesoft.com/mocks/795abd2b-3a7d-4419-aa58-f77d7383289b
+title: ClaimRegistration
+schemas:
+- !include response.raml
+- !include claimSchema.raml      
+
+/register:
+  displayName: Register Claim
+  post:
+    description: This is to register a claim in Guidewire ClaimCenter
+    body:
+      application/json:
+        schema: claimSchema
+    responses:
+      200:
+        body:
+          application/json:
+            schema: response

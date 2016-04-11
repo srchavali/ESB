@@ -1,0 +1,344 @@
+<ACORD>
+  <ClaimsSvcRq>
+    <RqUID>1B1BF000-0002-0000-0000-000002021906</RqUID>
+    <ClaimsNotificationAddRq>
+      <RqUID>1B1BF000-0002-0000-0000-000002021906</RqUID>
+      <TransactionRequestDt>2004-05-17T11:48:47</TransactionRequestDt>
+      <CurCd>USD</CurCd>
+      <InsuredOrPrincipal id="INSUREDORPRINCIPAL">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <CommlName>
+              <CommercialName>COMMAND SECURITY CORP</CommercialName>
+            </CommlName>
+          </NameInfo>
+          <Addr>
+            <Addr1>55 LEXINGTON PARK</Addr1>
+            <City>LAGRANGEVILLE</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12540</PostalCode>
+          </Addr>
+        </GeneralPartyInfo>
+        <InsuredOrPrincipalInfo>
+          <InsuredOrPrincipalRoleCd>Insured</InsuredOrPrincipalRoleCd>
+        </InsuredOrPrincipalInfo>
+      </InsuredOrPrincipal>
+      <Policy>
+        <PolicyNumber>86663008197</PolicyNumber>
+        <CompanyProductCd>C</CompanyProductCd>
+        <LOBCd>AUTO</LOBCd>
+        <LOBSubCd>LSUD</LOBSubCd>
+        <ContractTerm>
+          <EffectiveDt>2003-10-01</EffectiveDt>
+          <ExpirationDt>2004-10-01</ExpirationDt>
+        </ContractTerm>
+      </Policy>
+      <ClaimsOccurrence id="N2021906">
+        <ClaimsReported>
+          <ReportedDt>2004-04-29</ReportedDt>
+        </ClaimsReported>
+        <LossDt>2004-04-27</LossDt>
+        <LossTime>09:30:00</LossTime>
+        <IncidentDesc>LOSS DESCRIPTION</IncidentDesc>
+        <ViolationsCitationsInd>Y</ViolationsCitationsInd>
+      </ClaimsOccurrence>
+      <ClaimsParty id="INS_DRIVER">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>FLINTSTONE</Surname>
+              <GivenName>FRED</GivenName>
+            </PersonName>
+          </NameInfo>
+          <Addr>
+            <Addr1>22 BEDROCK ROAD</Addr1>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+          </Addr>
+        </GeneralPartyInfo>
+        <PersonInfo>
+          <BirthDt>1959-12-17</BirthDt>
+        </PersonInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>DRV</ClaimsPartyRoleCd>
+          <ClaimsPartyLocCd>INSVEH</ClaimsPartyLocCd>
+        </ClaimsPartyInfo>
+        <ClaimsDriverInfo>
+          <DriversLicense>
+            <DriversLicenseNumber>LIC NUM</DriversLicenseNumber>
+            <StateProvCd>NY</StateProvCd>
+          </DriversLicense>
+        </ClaimsDriverInfo>
+        <ClaimsInjuredInfo>
+          <Age>44</Age>
+        </ClaimsInjuredInfo>
+      </ClaimsParty>
+      <ClaimsParty id="INS_VEH_OWNER">
+        <GeneralPartyInfo>
+          <Addr>
+            <Addr1>55 LEXINGTON PARK</Addr1>
+            <City>LAGRANGEVILLE</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12540</PostalCode>
+          </Addr>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>VEH</ClaimsPartyRoleCd>
+          <ClaimsPartyLocCd>INSVEH</ClaimsPartyLocCd>
+        </ClaimsPartyInfo>
+      </ClaimsParty>
+      <ClaimsParty id="INSURED_VEHICLE_1">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>RUBBLE</Surname>
+              <GivenName>BARNEY</GivenName>
+            </PersonName>
+          </NameInfo>
+          <Addr>
+            <Addr1>101 RUBBLE ROAD</Addr1>
+            <Addr2>P.O. BOX 101</Addr2>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+            <County>DUTCHESS</County>
+          </Addr>
+          <Communications>
+            <PhoneInfo>
+              <PhoneTypeCd>Phone</PhoneTypeCd>
+              <CommunicationUseCd>Business</CommunicationUseCd>
+              <PhoneNumber>917-691-3769</PhoneNumber>
+            </PhoneInfo>
+          </Communications>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>PAS</ClaimsPartyRoleCd>
+          <ClaimsPartyRoleCd>CLM</ClaimsPartyRoleCd>
+          <ClaimsPartyLocCd>INSVEH</ClaimsPartyLocCd>
+        </ClaimsPartyInfo>
+        <ClaimsInjuredInfo>
+          <ClaimsInjury>
+            <InjuryNatureDesc>INJURY DESCRIPTION</InjuryNatureDesc>
+          </ClaimsInjury>
+        </ClaimsInjuredInfo>
+      </ClaimsParty>
+      <ClaimsParty id="INSURED_VEHICLE_2">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>FLINTSTONE</Surname>
+              <GivenName>WILMA</GivenName>
+            </PersonName>
+          </NameInfo>
+          <Addr>
+            <Addr1>22 BEDROCK ROAD</Addr1>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+            <County>DUTCHESS</County>
+          </Addr>
+          <Communications>
+            <PhoneInfo>
+              <PhoneTypeCd>Phone</PhoneTypeCd>
+              <CommunicationUseCd>Business</CommunicationUseCd>
+              <PhoneNumber>719-467-1967</PhoneNumber>
+            </PhoneInfo>
+          </Communications>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>PAS</ClaimsPartyRoleCd>
+          <ClaimsPartyLocCd>INSVEH</ClaimsPartyLocCd>
+        </ClaimsPartyInfo>
+        <ClaimsInjuredInfo>
+          <ClaimsInjury>
+            <InjuryNatureDesc>INJURY DESCRIPTION</InjuryNatureDesc>
+          </ClaimsInjury>
+        </ClaimsInjuredInfo>
+      </ClaimsParty>
+      <ClaimsParty id="PROPERTY_OWNER_1">
+        <GeneralPartyInfo>
+          <Addr>
+            <Addr1>ADD1</Addr1>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+            <County>DUTCHESS</County>
+          </Addr>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>PRO</ClaimsPartyRoleCd>
+        </ClaimsPartyInfo>
+      </ClaimsParty>
+      <ClaimsParty id="OTHER_VEHICLE_DRIVER_1">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>CRANE</Surname>
+              <GivenName>FRASIER</GivenName>
+            </PersonName>
+          </NameInfo>
+          <Addr>
+            <Addr1>877 LILITH ROAD</Addr1>
+            <Addr2>APT. 877</Addr2>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+            <County>DUTCHESS</County>
+          </Addr>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>DOC</ClaimsPartyRoleCd>
+          <ClaimsPartyRoleCd>VEH</ClaimsPartyRoleCd>
+          <ClaimsPartyLocCd>OTHVEH</ClaimsPartyLocCd>
+          <OtherOrPriorPolicy>
+            <PolicyCd>Other</PolicyCd>
+            <PolicyNumber>POLNUM</PolicyNumber>
+            <LOBCd>AUTOP</LOBCd>
+            <InsurerName>INSCONAME</InsurerName>
+          </OtherOrPriorPolicy>
+        </ClaimsPartyInfo>
+        <ClaimsDriverInfo>
+          <DriversLicense>
+            <DriversLicenseNumber>LIC NUM</DriversLicenseNumber>
+            <StateProvCd>NY</StateProvCd>
+          </DriversLicense>
+        </ClaimsDriverInfo>
+      </ClaimsParty>
+      <ClaimsParty id="OTHER_VEHICLE_PASSENGER_1_1">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>NORTON</Surname>
+              <GivenName>ED</GivenName>
+            </PersonName>
+          </NameInfo>
+          <Addr>
+            <Addr1>87 TRIXIE LANE</Addr1>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+          </Addr>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>PAS</ClaimsPartyRoleCd>
+          <ClaimsPartyLocCd>OTHVEH</ClaimsPartyLocCd>
+        </ClaimsPartyInfo>
+        <ClaimsInjuredInfo>
+          <ClaimsInjury>
+            <InjuryNatureDesc>PASSENGER INJURY</InjuryNatureDesc>
+          </ClaimsInjury>
+        </ClaimsInjuredInfo>
+      </ClaimsParty>
+      <ClaimsParty id="CALLER">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>ARGINET</Surname>
+              <GivenName>ARGINET</GivenName>
+            </PersonName>
+          </NameInfo>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>ReptBy</ClaimsPartyRoleCd>
+        </ClaimsPartyInfo>
+      </ClaimsParty>
+      <ClaimsParty id="WITNESS_1">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>PETRY</Surname>
+              <GivenName>ROB</GivenName>
+            </PersonName>
+          </NameInfo>
+          <Addr>
+            <Addr1>148 BONNIE MEADOW ROAD</Addr1>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+            <County>DUTCHESS</County>
+          </Addr>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>WIT</ClaimsPartyRoleCd>
+        </ClaimsPartyInfo>
+      </ClaimsParty>
+      <ClaimsParty id="WITNESS_2">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>PETRY</Surname>
+              <GivenName>LAURA</GivenName>
+            </PersonName>
+          </NameInfo>
+          <Addr>
+            <Addr1>148 BONNIE MEADOW ROAD</Addr1>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+            <County>DUTCHESS</County>
+          </Addr>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>WIT</ClaimsPartyRoleCd>
+        </ClaimsPartyInfo>
+      </ClaimsParty>
+      <ClaimsParty id="WITNESS_3">
+        <GeneralPartyInfo>
+          <NameInfo>
+            <PersonName>
+              <Surname>COOLEY</Surname>
+              <GivenName>MEL</GivenName>
+            </PersonName>
+          </NameInfo>
+          <Addr>
+            <Addr1>5656 BRADY DRIVE</Addr1>
+            <City>STAATSBURG</City>
+            <StateProvCd>NY</StateProvCd>
+            <PostalCode>12580</PostalCode>
+            <County>DUTCHESS</County>
+          </Addr>
+        </GeneralPartyInfo>
+        <ClaimsPartyInfo>
+          <ClaimsPartyRoleCd>WIT</ClaimsPartyRoleCd>
+        </ClaimsPartyInfo>
+      </ClaimsParty>
+      <AdjusterParty>
+        <ItemIdInfo>
+          <AgencyId>ARG022</AgencyId>
+        </ItemIdInfo>
+        <GeneralPartyInfo>
+          <NameInfo>
+            <CommlName>
+              <CommercialName>ARGONAUT - PHILADELPHIA DIVISION</CommercialName>
+            </CommlName>
+          </NameInfo>
+        </GeneralPartyInfo>
+      </AdjusterParty>
+      <AutoLossInfo ClaimsPartyRefs="INS_VEH_OWNER INS_DRIVER">
+        <VehInfo>
+          <Manufacturer>Nissan</Manufacturer>
+          <Model>Altima</Model>
+          <ModelYear>1992</ModelYear>
+          <LicensePlateNumber>Y96646W</LicensePlateNumber>
+          <RegistrationStateProvCd>NY</RegistrationStateProvCd>
+          <VehIdentificationNumber>VIN</VehIdentificationNumber>
+        </VehInfo>
+        <DamageDesc>DAMAGEDESCRIPTION</DamageDesc>
+      </AutoLossInfo>
+      <AutoLossInfo ClaimsPartyRefs="OTHER_VEHICLE_DRIVER_1">
+        <VehInfo>
+          <Manufacturer>Ford</Manufacturer>
+          <Model>Taurus</Model>
+          <ModelYear>1996</ModelYear>
+          <LicensePlateNumber>AB96646W</LicensePlateNumber>
+        </VehInfo>
+        <DamageDesc>DAMAGE DESCRIPTION</DamageDesc>
+        <ProbableIncurredAmt>
+            <Amt>1500.00</Amt>
+            <CurCd>USD</CurCd>
+        </ProbableIncurredAmt>
+      </AutoLossInfo>
+    </ClaimsNotificationAddRq>
+  </ClaimsSvcRq>
+</ACORD>

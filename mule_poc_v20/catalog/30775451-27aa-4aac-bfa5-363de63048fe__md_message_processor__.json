@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "claimInfo"
+        }
+    },
+    "outputMessageMetadata": {},
+    "id": "30775451-27aa-4aac-bfa5-363de63048fe",
+    "version": "5.2.0.0"
+}

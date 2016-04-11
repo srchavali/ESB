@@ -1,0 +1,431 @@
+<?xml version="1.0"?>
+<!-- Generated WSDL for ca.on.wsib.cc.webservices.createclaim.saveinprogress.service.IClaimRegistrationAPI web service -->
+<wsdl:definitions targetNamespace="http://wsib.on.ca/cc/webservices/saveinprogress/service" name="IClaimRegistrationAPI" xmlns="http://wsib.on.ca/cc/webservices/saveinprogress/service" xmlns:gwsoap="http://guidewire.com/ws/soapheaders" xmlns:gwwsdl="http://guidewire.com/pl/wsdl" xmlns:pogo="http://wsib.on.ca/cc/webservices/saveinprogress/vo" xmlns:pogo2="http://wsib.on.ca/cc/webservices/createclaim/kofax/vo" xmlns:pogo3="http://wsib.on.ca/cc/webservices/updatecontactinfo/vo" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://wsib.on.ca/cc/webservices/saveinprogress/service" elementFormDefault="qualified" xmlns:imported="http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.sipclaimmodel" xmlns:imported2="http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.providersipclaimmodel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/ws/soapheaders" schemaLocation="soapheaders.xsd"/>
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/updatecontactinfo/vo"/>
+      <xs:import namespace="http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.providersipclaimmodel" schemaLocation="ProviderSIPClaimModel.xsd"/>
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/createclaim/kofax/vo"/>
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/saveinprogress/vo"/>
+      <xs:import namespace="http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.sipclaimmodel" schemaLocation="SIPClaimModel.xsd"/>
+      <!-- saveInProgresseForm6eForm7(Claim, String) : SaveInProgressResponse -->
+      <xs:element name="saveInProgresseForm6eForm7">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="request" minOccurs="0" type="imported:Claim"/>
+            <xs:element name="requestId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="saveInProgresseForm6eForm7Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" type="pogo:SaveInProgressResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- registerClaim(String, String) : SaveInProgressResponse -->
+      <xs:element name="registerClaim">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="referencenumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="requestId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="registerClaimResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" type="pogo:SaveInProgressResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- cancelDraftClaim(String, String) : SaveInProgressResponse -->
+      <xs:element name="cancelDraftClaim">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="referencenumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="requestId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelDraftClaimResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" type="pogo:SaveInProgressResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- saveInProgresseProviderForm(Claim, String) : SaveInProgressResponse -->
+      <xs:element name="saveInProgresseProviderForm">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="request" minOccurs="0" type="imported2:Claim"/>
+            <xs:element name="requestId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="saveInProgresseProviderFormResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" type="pogo:SaveInProgressResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- submitProviderForm(String, String) : SaveInProgressResponse -->
+      <xs:element name="submitProviderForm">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="referencenumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="requestId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="submitProviderFormResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" type="pogo:SaveInProgressResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- addMailingAddress(EmployerAddressRequest) : EmployerAddressResponse -->
+      <xs:element name="addMailingAddress">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="request" minOccurs="0" type="pogo3:EmployerAddressRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addMailingAddressResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" type="pogo3:EmployerAddressResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- addBranchAddress(EmployerAddressRequest) : EmployerAddressResponse -->
+      <xs:element name="addBranchAddress">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="request" minOccurs="0" type="pogo3:EmployerAddressRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addBranchAddressResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" type="pogo3:EmployerAddressResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema targetNamespace="http://wsib.on.ca/cc/webservices/saveinprogress/vo" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/updatecontactinfo/vo"/>
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/createclaim/kofax/vo"/>
+      <xs:complexType name="SaveInProgressResponse">
+        <xs:sequence>
+          <xs:element name="DocumentMetaDataList" minOccurs="0" gw:viewas="list" xmlns:gw="http://guidewire.com/xsd">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="Entry" nillable="true" type="pogo2:DocumentMetaDataVO"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ErrorMessage" type="xs:string" minOccurs="0"/>
+          <xs:element name="ReferenceNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="ReturnCode" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://wsib.on.ca/cc/webservices/createclaim/kofax/vo" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/updatecontactinfo/vo"/>
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/saveinprogress/vo"/>
+      <xs:complexType name="DocumentMetaDataVO">
+        <xs:sequence>
+          <xs:element name="ClaimNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="DocDate" type="xs:string" minOccurs="0"/>
+          <xs:element name="DocDesc" type="xs:string" minOccurs="0"/>
+          <xs:element name="DocName" type="xs:string" minOccurs="0"/>
+          <xs:element name="DocPublicId" type="xs:string" minOccurs="0"/>
+          <xs:element name="DocUnitId" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://wsib.on.ca/cc/webservices/updatecontactinfo/vo" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/createclaim/kofax/vo"/>
+      <xs:import namespace="http://wsib.on.ca/cc/webservices/saveinprogress/vo"/>
+      <xs:complexType name="EmployerAddressRequest">
+        <xs:sequence>
+          <xs:element name="Address" minOccurs="0" type="pogo3:AddressVO"/>
+          <xs:element name="ClaimNumber" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AddressVO">
+        <xs:sequence>
+          <xs:element name="AddressLine1" type="xs:string" minOccurs="0"/>
+          <xs:element name="AddressLine2" type="xs:string" minOccurs="0"/>
+          <xs:element name="City" type="xs:string" minOccurs="0"/>
+          <xs:element name="Country" type="xs:string" minOccurs="0"/>
+          <xs:element name="County" type="xs:string" minOccurs="0"/>
+          <xs:element name="PostalCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="State" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EmployerAddressResponse">
+        <xs:sequence>
+          <xs:element name="StatusCode" type="xs:int"/>
+          <xs:element name="StatusMessage" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:portType name="IClaimRegistrationAPIPortType">
+    <wsdl:operation name="saveInProgresseForm6eForm7">
+      <wsdl:input name="saveInProgresseForm6eForm7" message="saveInProgresseForm6eForm7"/>
+      <wsdl:output name="saveInProgresseForm6eForm7Response" message="saveInProgresseForm6eForm7Response"/>
+    </wsdl:operation>
+    <wsdl:operation name="registerClaim">
+      <wsdl:input name="registerClaim" message="registerClaim"/>
+      <wsdl:output name="registerClaimResponse" message="registerClaimResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="cancelDraftClaim">
+      <wsdl:input name="cancelDraftClaim" message="cancelDraftClaim"/>
+      <wsdl:output name="cancelDraftClaimResponse" message="cancelDraftClaimResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="saveInProgresseProviderForm">
+      <wsdl:input name="saveInProgresseProviderForm" message="saveInProgresseProviderForm"/>
+      <wsdl:output name="saveInProgresseProviderFormResponse" message="saveInProgresseProviderFormResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitProviderForm">
+      <wsdl:input name="submitProviderForm" message="submitProviderForm"/>
+      <wsdl:output name="submitProviderFormResponse" message="submitProviderFormResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addMailingAddress">
+      <wsdl:input name="addMailingAddress" message="addMailingAddress"/>
+      <wsdl:output name="addMailingAddressResponse" message="addMailingAddressResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addBranchAddress">
+      <wsdl:input name="addBranchAddress" message="addBranchAddress"/>
+      <wsdl:output name="addBranchAddressResponse" message="addBranchAddressResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IClaimRegistrationAPISoap12Binding" type="IClaimRegistrationAPIPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="saveInProgresseForm6eForm7">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input name="saveInProgresseForm6eForm7">
+        <soap12:body use="literal"/>
+        <soap12:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveInProgresseForm6eForm7Response">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerClaim">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input name="registerClaim">
+        <soap12:body use="literal"/>
+        <soap12:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerClaimResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelDraftClaim">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input name="cancelDraftClaim">
+        <soap12:body use="literal"/>
+        <soap12:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelDraftClaimResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveInProgresseProviderForm">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input name="saveInProgresseProviderForm">
+        <soap12:body use="literal"/>
+        <soap12:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveInProgresseProviderFormResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitProviderForm">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input name="submitProviderForm">
+        <soap12:body use="literal"/>
+        <soap12:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitProviderFormResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMailingAddress">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input name="addMailingAddress">
+        <soap12:body use="literal"/>
+        <soap12:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addMailingAddressResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBranchAddress">
+      <soap12:operation style="document" soapAction=""/>
+      <wsdl:input name="addBranchAddress">
+        <soap12:body use="literal"/>
+        <soap12:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addBranchAddressResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IClaimRegistrationAPISoap11Binding" type="IClaimRegistrationAPIPortType">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="saveInProgresseForm6eForm7">
+      <soap11:operation style="document" soapAction=""/>
+      <wsdl:input name="saveInProgresseForm6eForm7">
+        <soap11:body use="literal"/>
+        <soap11:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveInProgresseForm6eForm7Response">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerClaim">
+      <soap11:operation style="document" soapAction=""/>
+      <wsdl:input name="registerClaim">
+        <soap11:body use="literal"/>
+        <soap11:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerClaimResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelDraftClaim">
+      <soap11:operation style="document" soapAction=""/>
+      <wsdl:input name="cancelDraftClaim">
+        <soap11:body use="literal"/>
+        <soap11:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelDraftClaimResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveInProgresseProviderForm">
+      <soap11:operation style="document" soapAction=""/>
+      <wsdl:input name="saveInProgresseProviderForm">
+        <soap11:body use="literal"/>
+        <soap11:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveInProgresseProviderFormResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitProviderForm">
+      <soap11:operation style="document" soapAction=""/>
+      <wsdl:input name="submitProviderForm">
+        <soap11:body use="literal"/>
+        <soap11:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitProviderFormResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMailingAddress">
+      <soap11:operation style="document" soapAction=""/>
+      <wsdl:input name="addMailingAddress">
+        <soap11:body use="literal"/>
+        <soap11:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addMailingAddressResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBranchAddress">
+      <soap11:operation style="document" soapAction=""/>
+      <wsdl:input name="addBranchAddress">
+        <soap11:body use="literal"/>
+        <soap11:header message="gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="gw-locale" part="gw-locale" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addBranchAddressResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IClaimRegistrationAPI">
+    <wsdl:port name="IClaimRegistrationAPISoap12Port" binding="IClaimRegistrationAPISoap12Binding">
+      <soap12:address location="http://10.49.97.147:38000/cc/ws/ca/on/wsib/cc/webservices/createclaim/saveinprogress/service/IClaimRegistrationAPI"/>
+      <gwwsdl:address location="${cc}/ws/ca/on/wsib/cc/webservices/createclaim/saveinprogress/service/IClaimRegistrationAPI"/>
+    </wsdl:port>
+    <wsdl:port name="IClaimRegistrationAPISoap11Port" binding="IClaimRegistrationAPISoap11Binding">
+      <soap11:address location="http://10.49.97.147:38000/cc/ws/ca/on/wsib/cc/webservices/createclaim/saveinprogress/service/IClaimRegistrationAPI/soap11"/>
+      <gwwsdl:address location="${cc}/ws/ca/on/wsib/cc/webservices/createclaim/saveinprogress/service/IClaimRegistrationAPI/soap11"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:message name="saveInProgresseForm6eForm7">
+    <wsdl:part name="parameters" element="saveInProgresseForm6eForm7"/>
+  </wsdl:message>
+  <wsdl:message name="saveInProgresseForm6eForm7Response">
+    <wsdl:part name="parameters" element="saveInProgresseForm6eForm7Response"/>
+  </wsdl:message>
+  <wsdl:message name="registerClaim">
+    <wsdl:part name="parameters" element="registerClaim"/>
+  </wsdl:message>
+  <wsdl:message name="registerClaimResponse">
+    <wsdl:part name="parameters" element="registerClaimResponse"/>
+  </wsdl:message>
+  <wsdl:message name="cancelDraftClaim">
+    <wsdl:part name="parameters" element="cancelDraftClaim"/>
+  </wsdl:message>
+  <wsdl:message name="cancelDraftClaimResponse">
+    <wsdl:part name="parameters" element="cancelDraftClaimResponse"/>
+  </wsdl:message>
+  <wsdl:message name="saveInProgresseProviderForm">
+    <wsdl:part name="parameters" element="saveInProgresseProviderForm"/>
+  </wsdl:message>
+  <wsdl:message name="saveInProgresseProviderFormResponse">
+    <wsdl:part name="parameters" element="saveInProgresseProviderFormResponse"/>
+  </wsdl:message>
+  <wsdl:message name="submitProviderForm">
+    <wsdl:part name="parameters" element="submitProviderForm"/>
+  </wsdl:message>
+  <wsdl:message name="submitProviderFormResponse">
+    <wsdl:part name="parameters" element="submitProviderFormResponse"/>
+  </wsdl:message>
+  <wsdl:message name="addMailingAddress">
+    <wsdl:part name="parameters" element="addMailingAddress"/>
+  </wsdl:message>
+  <wsdl:message name="addMailingAddressResponse">
+    <wsdl:part name="parameters" element="addMailingAddressResponse"/>
+  </wsdl:message>
+  <wsdl:message name="addBranchAddress">
+    <wsdl:part name="parameters" element="addBranchAddress"/>
+  </wsdl:message>
+  <wsdl:message name="addBranchAddressResponse">
+    <wsdl:part name="parameters" element="addBranchAddressResponse"/>
+  </wsdl:message>
+  <wsdl:message name="gw-authentication">
+    <wsdl:part name="gw-authentication" element="gwsoap:authentication"/>
+  </wsdl:message>
+  <wsdl:message name="gw-locale">
+    <wsdl:part name="gw-locale" element="gwsoap:locale"/>
+  </wsdl:message>
+</wsdl:definitions>

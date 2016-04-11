@@ -1,0 +1,16 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "Web_Service_Consumer",
+            "typeId": "saveInProgresseForm6eForm7"
+        }
+    },
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "Web_Service_Consumer",
+            "typeId": "saveInProgresseForm6eForm7"
+        }
+    },
+    "id": "ffb0a322-f7b9-4dc2-977d-3beae9ebb13b",
+    "version": "5.2.0.0"
+}

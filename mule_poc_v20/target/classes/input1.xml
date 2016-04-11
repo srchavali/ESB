@@ -1,0 +1,114 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://guidewire.com/ws/soapheaders" xmlns:ns18="http://wsib.on.ca/cc/webservices/saveinprogress/service" xmlns:ca="http://guidewire.com/cc/gx/ca.on.wsib.cc.xmlmodel.sipclaimmodel">
+   <soap:Header>
+      <soap1:locale>en_CA</soap1:locale>
+      <soap1:authentication>
+         <soap1:username>su</soap1:username>
+         <soap1:password>gw</soap1:password>
+      </soap1:authentication>
+   </soap:Header>
+   <soap:Body>
+      <ns18:saveInProgresseForm6eForm7>
+         <ns18:request>
+            <ca:AccidentConcern_WC>false</ca:AccidentConcern_WC>
+            <ca:AccidentConcernDescription_WC>MOONWALK MISHAP</ca:AccidentConcernDescription_WC>
+            <ca:AccidentWitness_WC>true</ca:AccidentWitness_WC>
+            <ca:claimant>
+               <ca:DateOfBirth>
+                  <ca:XmlDateTime>1958-06-29T00:00:00.000</ca:XmlDateTime>
+               </ca:DateOfBirth>
+               <ca:FirstName>MICHAEL</ca:FirstName>
+               <ca:Gender>M</ca:Gender>
+               <ca:LastName>JACKSON</ca:LastName>
+               <ca:PrimaryAddress>
+                  <ca:AddressLine1>639 REID ST</ca:AddressLine1>
+                  <ca:City>PETERBOROUGH</ca:City>
+                  <ca:PostalCode>K9H 4H5</ca:PostalCode>
+                  <ca:State>ON</ca:State>
+               </ca:PrimaryAddress>
+               <ca:TaxID>118-099-589</ca:TaxID>
+               <ca:WorkPhone>416-344-1000</ca:WorkPhone>
+               <ca:WSIB_LanguageOfService>english</ca:WSIB_LanguageOfService>
+            </ca:claimant>
+            <ca:ClaimInjuryIncident>
+               <ca:AccidentCatOptns_WC>SlipTrip</ca:AccidentCatOptns_WC>
+               <ca:AccidentIllnessCat_WC>SuddenSpecificEventOccurence</ca:AccidentIllnessCat_WC>
+               <ca:BodyParts>
+                  <ca:Entry>
+                     <ca:DetailedBodyPart>Teeth</ca:DetailedBodyPart>
+                  </ca:Entry>
+               </ca:BodyParts>
+            </ca:ClaimInjuryIncident>
+            <ca:ClaimType_WC>nlt</ca:ClaimType_WC>
+            <ca:DateRenderReportSubmitted_WC>
+               <ca:XmlDateTime>2016-02-08T10:55:57.000</ca:XmlDateTime>
+            </ca:DateRenderReportSubmitted_WC>
+            <ca:DateRptdToEmployer>
+               <ca:XmlDateTime>2016-02-02T00:00:00.000</ca:XmlDateTime>
+            </ca:DateRptdToEmployer>
+            <ca:Documents>
+               <ca:Entry>
+                  <ca:Author>KofaxDev</ca:Author>
+                  <ca:DateCreated>
+                     <ca:XmlDateTime>2016-02-09T00:00:00.000</ca:XmlDateTime>
+                  </ca:DateCreated>
+                  <ca:Description>Employer&amp;apos;s Report of Injury</ca:Description>
+                  <ca:DocUID>34769203</ca:DocUID>
+                  <ca:MimeType>image/tiff</ca:MimeType>
+                  <ca:Name>2016-02-09-Employer&amp;apos;s Report of Injury-33199.tif</ca:Name>
+                  <ca:WSIB_DateReceived>
+                     <ca:XmlDateTime>2016-02-08T10:55:57.000</ca:XmlDateTime>
+                  </ca:WSIB_DateReceived>
+                  <ca:WSIB_Document_Intake_Source>Portal</ca:WSIB_Document_Intake_Source>
+                  <ca:WSIB_FormID>7</ca:WSIB_FormID>
+                  <ca:WSIB_HCPymtDocument>nopaymentrequired</ca:WSIB_HCPymtDocument>
+                  <ca:WSIB_UDID>EC0016020810248100</ca:WSIB_UDID>
+               </ca:Entry>
+            </ca:Documents>
+            <ca:employer_WC>
+               <ca:WSIB_AccountNumber>9626859</ca:WSIB_AccountNumber>
+               <ca:PrimaryAddress>
+                  <ca:AddressLine1>1740 DREW RD</ca:AddressLine1>
+                  <ca:City>MISSISSAUGA</ca:City>
+                  <ca:PostalCode>L5S 1J6</ca:PostalCode>
+                  <ca:State>ON</ca:State>
+               </ca:PrimaryAddress>
+               <ca:PrimaryContact>
+                  <ca:Name>MECHANICAL SYSTEMS       REMANUFACTURING INC.</ca:Name>
+               </ca:PrimaryContact>
+               <ca:WSIB_LegalName>MECHANICAL SYSTEMS       REMANUFACTURING INC.</ca:WSIB_LegalName>
+            </ca:employer_WC>
+            <ca:EmploymentData>
+               <ca:BenEarningsSummary>
+                  <ca:Entry>
+                     <ca:BenefitEarnings>
+                        <ca:Entry/>
+                     </ca:BenefitEarnings>
+                  </ca:Entry>
+               </ca:BenEarningsSummary>
+            </ca:EmploymentData>
+            <ca:HealthCare_WC>
+               <ca:EmployerHCReceivedDate>
+                  <ca:XmlDateTime>2016-02-01T00:00:00.000</ca:XmlDateTime>
+               </ca:EmployerHCReceivedDate>
+               <ca:HCReceived>Yes</ca:HCReceived>
+               <ca:HCReceivedDate>
+                  <ca:XmlDateTime>2016-02-01T00:00:00.000</ca:XmlDateTime>
+               </ca:HCReceivedDate>
+               <ca:HCReceivedWorker>Yes</ca:HCReceivedWorker>
+            </ca:HealthCare_WC>
+            <ca:LossDate>
+               <ca:XmlDateTime>2016-01-20T00:00:00.000</ca:XmlDateTime>
+            </ca:LossDate>
+            <ca:Policy>
+               <ca:WSIB_FirmNumber/>
+            </ca:Policy>
+            <ca:PriorSimilarCond_WC>false</ca:PriorSimilarCond_WC>
+            <ca:SignatAknlgmt_WC>true</ca:SignatAknlgmt_WC>
+            <ca:WSIB_HealthPymtInd_WC>nopaymentrequired</ca:WSIB_HealthPymtInd_WC>
+            <ca:WSIB_IntakeChannel>Portal</ca:WSIB_IntakeChannel>
+            <ca:WSIB_KOFAX_ClaimType>nlt</ca:WSIB_KOFAX_ClaimType>
+            <ca:WSIB_KOFAX_QType>FORM7</ca:WSIB_KOFAX_QType>
+         </ns18:request>
+      </ns18:saveInProgresseForm6eForm7>
+   </soap:Body>
+</soap:Envelope>

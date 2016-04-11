@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "fnol"
+        }
+    },
+    "outputMessageMetadata": {},
+    "id": "bf13060c-7c89-464e-9ae0-0bf9d8fc85e1",
+    "version": "5.2.0.0"
+}
